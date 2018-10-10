@@ -45,13 +45,13 @@
             </props>
         </property>
         <!--
-                直接用映射文件要用mappingLocations,映射文件地址用mappingDirectoryLocations
+        直接用映射文件要用mappingLocations,映射文件地址用mappingDirectoryLocations
         -->
         <!--
-                <property name="mappingDirectoryLocations" value="classpath:{dictionary}"/>
+        <property name="mappingDirectoryLocations" value="classpath:{dictionary}"/>
         -->
         <!--
-                <property name="mappingLocations" value="classpath:entity.hbm.xml"/>
+        <property name="mappingLocations" value="classpath:entity.hbm.xml"/>
         -->
 
         <!--hibernate:自动扫描实体-关系关系映射包Model-->

@@ -2,6 +2,7 @@ package blog.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
 
 @Entity
@@ -9,34 +10,34 @@ import java.io.Serializable;
 public class ArticleContent implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private Integer contentId;
+    private String contentId;
 
-    private Integer articleInfoId;
+    private String  articleInfoId;
     private String content;
 
     public ArticleContent() {
     }
 
-    public ArticleContent(Integer articleInfoId, String content) {
+    public ArticleContent(String  contentId, String  articleInfoId, String content) {
+        this.contentId = contentId;
         this.articleInfoId = articleInfoId;
         this.content = content;
     }
 
-    public Integer getContentId() {
+    public String  getContentId() {
         return contentId;
     }
 
-    public void setContentId(Integer contentId) {
+    public void setContentId(String contentId) {
         this.contentId = contentId;
     }
 
-    public Integer getArticleInfoId() {
+    public String  getArticleInfoId() {
         return articleInfoId;
     }
 
-    public void setArticleInfoId(Integer articleInfoId) {
+    public void setArticleInfoId(String  articleInfoId) {
         this.articleInfoId = articleInfoId;
     }
 

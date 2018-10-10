@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Service
+@Transactional
 public class ArticleServiceImpl implements IArticleService {
 
     @Resource
@@ -25,36 +28,64 @@ public class ArticleServiceImpl implements IArticleService {
     @Resource
     ArticleCommentDao articleCommentDao;
 
-    @Transactional
-    public boolean createArticleInfo(ArticleInfo articleInfo) {
+    public String createArticleInfo(ArticleInfo articleInfo) {
+        String articleInfoId = UUID.randomUUID().toString();
+        articleInfo.setArticleInfoId(articleInfoId);
         articleInfoDao.save(articleInfo);
-        return true;
+        return articleInfoId;
     }
 
-    @Transactional
     public boolean createArticleContent(ArticleContent articleContent) {
         articleContentDao.save(articleContent);
         return true;
     }
 
-    @Transactional
     public boolean createArticleComment(ArticleComment articleComment) {
         articleCommentDao.save(articleComment);
         return true;
     }
 
-    @Transactional
+    public boolean deleteArticleInfo(String infoId) {
+        return false;
+    }
+
+    public boolean deleteArticleContentByInfoId(String infoId) {
+        return false;
+    }
+
+    public boolean deleteArticleContentByContentId(String contentId) {
+        return false;
+    }
+
+    public boolean deleteArticleComment(String commentId) {
+        return false;
+    }
+
+    public boolean updateArticleContent(ArticleContent articleContent) {
+        return false;
+    }
+
     public List<ArticleInfo> getArticleInfoByType(String type) {
         return null;
     }
 
-    @Transactional
-    public ArticleContent getArticleContentByInfoId(Integer infoId) {
+    public List<Integer> getArticleInfoIdByType(String type) {
         return null;
     }
 
-    @Transactional
-    public List<ArticleComment> getArticleCommentByInfoId(Integer infoId) {
+    public Map<ArticleInfo, ArticleContent> getArticleContentByInfo(List<ArticleInfo> info) {
+        return null;
+    }
+
+    public Map<ArticleInfo, ArticleContent> getArticleContentByInfoId(List<String> infoId) {
+        return null;
+    }
+
+    public ArticleContent getArticleContentByInfoId(String infoId) {
+        return null;
+    }
+
+    public List<ArticleComment> getArticleCommentByInfoId(String infoId) {
         List<ArticleComment> articleCommentLists = articleCommentDao.getArticleCommentByInfoId(infoId);
         return articleCommentLists;
     }

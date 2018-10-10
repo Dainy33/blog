@@ -3,41 +3,44 @@ package blog.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 
 @Entity
 @Table
 public class ArticleComment implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private Integer commentId;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Integer articleInfoId;
+    @Id
+    @Column
+    private String commentId;
+
+    private String articleInfoId;
     private String comment;
 
     public ArticleComment() {
     }
 
-    public ArticleComment(Integer articleInfoId, String comment) {
+    public ArticleComment(String  commentId, String  articleInfoId, String comment) {
+        this.commentId = commentId;
         this.articleInfoId = articleInfoId;
         this.comment = comment;
     }
 
-    public Integer getCommentId() {
+    public String  getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Integer commentId) {
+    public void setCommentId(String  commentId) {
         this.commentId = commentId;
     }
 
-    public Integer getArticleInfoId() {
+    public String  getArticleInfoId() {
         return articleInfoId;
     }
 
-    public void setArticleInfoId(Integer articleInfoId) {
+    public void setArticleInfoId(String  articleInfoId) {
         this.articleInfoId = articleInfoId;
     }
 

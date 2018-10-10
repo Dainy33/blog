@@ -5,14 +5,14 @@ import java.util.UUID;
 
 @Entity
 @Table
-public class Tourist {
+public class User {
 
     @Id
     @Column
-    private UUID touristId;
+    private UUID userId;
 
-    private String name;
-    private String meta;
+    private String username;
+    private String password;
 
 
 }

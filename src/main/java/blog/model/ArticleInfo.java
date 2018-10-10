@@ -5,15 +5,15 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table
 public class ArticleInfo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private Integer articleInfoId;
+    private String articleInfoId;
 
     private String title;
     private String type;
@@ -32,17 +32,18 @@ public class ArticleInfo implements Serializable {
     public ArticleInfo() {
     }
 
-    public ArticleInfo(String title,String type, String author) {
+    public ArticleInfo(String articleInfoId, String title, String type, String author) {
+        this.articleInfoId = articleInfoId;
         this.title = title;
         this.type = type;
         this.author = author;
     }
 
-    public Integer getId() {
+    public String getArticleInfoId() {
         return articleInfoId;
     }
 
-    public void setId(Integer articleInfoId) {
+    public void setArticleInfoId(String articleInfoId) {
         this.articleInfoId = articleInfoId;
     }
 

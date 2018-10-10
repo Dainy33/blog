@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/test")
@@ -22,7 +23,7 @@ public class TestController {
     @RequestMapping(value = "/createInfoTest")
     @ResponseBody
     public String createInfoTest() {
-        ArticleInfo articleInfo = new ArticleInfo("First test article", "Test", "Dainy");
+        ArticleInfo articleInfo = new ArticleInfo(UUID.randomUUID().toString(),"First test article", "Test", "Dainy");
         iArticleService.createArticleInfo(articleInfo);
         return "Banana!";
     }
@@ -31,7 +32,7 @@ public class TestController {
     @RequestMapping(value = "/createContentTest")
     @ResponseBody
     public String createContentTest(){
-        ArticleContent articleContent = new ArticleContent(1,"一花一树一世界!");
+        ArticleContent articleContent = new ArticleContent(UUID.randomUUID().toString(),UUID.randomUUID().toString(),"一花一树一世界!");
         iArticleService.createArticleContent(articleContent);
         return "Banana!";
     }
@@ -39,7 +40,7 @@ public class TestController {
     @RequestMapping(value = "/createCommentTest")
     @ResponseBody
     public String createCommentTest(){
-        ArticleComment articleComment = new ArticleComment(1,"月落乌啼霜满天!");
+        ArticleComment articleComment = new ArticleComment(UUID.randomUUID().toString(),UUID.randomUUID().toString(),"月落乌啼霜满天!");
         iArticleService.createArticleComment(articleComment);
         return "Banana!";
     }
@@ -50,7 +51,7 @@ public class TestController {
     public ResponseInfo getCommentByIdTest(){
         ResponseInfo responseInfo = ResponseInfo.createFailedResponse("");
 
-        List<ArticleComment> articleCommentList = iArticleService.getArticleCommentByInfoId(1);
+        List<ArticleComment> articleCommentList = iArticleService.getArticleCommentByInfoId("1");
 
         responseInfo = ResponseInfo.createQueryListResponse(articleCommentList,10,"5","5");
         return responseInfo;

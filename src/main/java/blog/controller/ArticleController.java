@@ -4,6 +4,7 @@ import blog.model.ArticleContent;
 import blog.model.ArticleInfo;
 import blog.service.IArticleService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,17 +24,29 @@ public class ArticleController {
         String articleInfoId = iArticleService.createArticleInfo(articleInfo);
         articleContent.setArticleInfoId(articleInfoId);
         iArticleService.createArticleContent(articleContent);
-        return "article/writeSuccess";
+
+        return "common/success";
+    }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public String delete(ArticleInfo articleInfo){
+
+        String infoId = articleInfo.getArticleInfoId();
+        iArticleService.deleteArticleInfoByInfoId(infoId);
+        iArticleService.deleteArticleContent(infoId);
+        iArticleService.deleteArticleComment(infoId);
+
+        return "common/success";
     }
 
     //首页显示最新的N篇文章 N=10
+    @RequestMapping(value = "getLatestTenArticleInfo",method = RequestMethod.GET)
+    public String getLatestTenArticleInfo(Model model){
+        iArticleService.getLatestTenArticleInfo();
 
-    @RequestMapping(value = "/createInfoTest")
-    public String createInfoTest() {
-        ArticleInfo articleInfo = new ArticleInfo(UUID.randomUUID().toString(),"First test article", "Test", "Dainy");
-        iArticleService.createArticleInfo(articleInfo);
-        return "article/writeSuccess";
+        return "article/latestTenArticleInfo";
     }
+
 }
 /**
  * @program: blog

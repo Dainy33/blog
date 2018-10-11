@@ -45,15 +45,22 @@ public class ArticleServiceImpl implements IArticleService {
         return true;
     }
 
-    public boolean deleteArticleInfo(String infoId) {
-        return false;
+    public boolean deleteArticleInfoByInfoId(String infoId) {
+        articleInfoDao.deleteArticleInfoByInfoId(infoId);
+        return true;
     }
 
     public boolean deleteArticleContentByInfoId(String infoId) {
-        return false;
+        articleContentDao.deleteArticleContentByInfoId(infoId);
+        return true;
     }
 
-    public boolean deleteArticleContentByContentId(String contentId) {
+    public boolean deleteArticleCommentByInfoId(String infoId) {
+        articleCommentDao.deleteArticleCommentByInfoId(infoId);
+        return true;
+    }
+
+    public boolean deleteArticleContent(String contentId) {
         return false;
     }
 
@@ -73,21 +80,22 @@ public class ArticleServiceImpl implements IArticleService {
         return null;
     }
 
-    public Map<ArticleInfo, ArticleContent> getArticleContentByInfo(List<ArticleInfo> info) {
+    public List<Map<ArticleInfo, ArticleContent>> getArticleContentByInfo(ArticleInfo info) {
         return null;
     }
 
-    public Map<ArticleInfo, ArticleContent> getArticleContentByInfoId(List<String> infoId) {
-        return null;
-    }
-
-    public ArticleContent getArticleContentByInfoId(String infoId) {
+    public List<Map<ArticleInfo, ArticleContent>> getArticleContentByInfoId(String infoId) {
         return null;
     }
 
     public List<ArticleComment> getArticleCommentByInfoId(String infoId) {
         List<ArticleComment> articleCommentLists = articleCommentDao.getArticleCommentByInfoId(infoId);
         return articleCommentLists;
+    }
+
+    public List<ArticleInfo> getLatestTenArticleInfo() {
+        List<ArticleInfo> articleInfoList = articleInfoDao.getLatestTenArticleInfo();
+        return articleInfoList;
     }
 }
 /**

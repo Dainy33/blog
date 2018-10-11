@@ -13,7 +13,6 @@
 </head>
 <body>
 <h3>登录页面</h3>
-<br>
 <form action="/userController/login" method="post">
     <table>
         <tr>

@@ -17,6 +17,14 @@ public class ArticleCommentDao extends GenericDao<ArticleComment,String> {
         query.setParameter("articleInfoId",articleInfoId);
         return query.list();
     }
+
+    public boolean deleteArticleCommentByInfoId(String infoId){
+        String hql = "delete from ArticleComment where articleInfoId = :articleInfoId";
+        Query query = getSession().createQuery(hql);
+        query.setParameter("articleInfoId",infoId);
+        query.executeUpdate();
+        return true;
+    }
 }
 /**
  * @program: blog

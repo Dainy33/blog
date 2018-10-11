@@ -24,9 +24,9 @@ public class UserController {
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         boolean result = iUserService.ensureUser(username,password);
         if(result){
-            return "user/success";
+            return "common/success";
         }
-        return "user/error";
+        return "common/error";
     }
 
 
@@ -39,9 +39,9 @@ public class UserController {
     public String register(@RequestParam("username") String username, @RequestParam("password1") String password1, @RequestParam("password2") String password2) {
         boolean result = iUserService.createUser(username, password1, password2);
         if(result){
-            return "user/success";
+            return "common/success";
         }
-        return "user/error";
+        return "common/error";
     }
 
 

@@ -16,11 +16,13 @@ public interface IArticleService {
 
     public boolean createArticleComment(ArticleComment articleComment);
 
-    public boolean deleteArticleInfo(String infoId);
+    public boolean deleteArticleInfoByInfoId(String infoId);
 
     public boolean deleteArticleContentByInfoId(String infoId);
 
-    public boolean deleteArticleContentByContentId(String contentId);
+    public boolean deleteArticleCommentByInfoId(String infoId);
+
+    public boolean deleteArticleContent(String contentId);
 
     public boolean deleteArticleComment(String commentId);
 
@@ -30,11 +32,13 @@ public interface IArticleService {
 
     public List<Integer> getArticleInfoIdByType(String type);
 
-    public Map<ArticleInfo,ArticleContent> getArticleContentByInfo(List<ArticleInfo> info);
+    public List<Map<ArticleInfo,ArticleContent>> getArticleContentByInfo(ArticleInfo info);
 
-    public Map<ArticleInfo,ArticleContent> getArticleContentByInfoId(List<String> infoId);
+    public List<Map<ArticleInfo,ArticleContent>> getArticleContentByInfoId(String infoId);
 
     public List<ArticleComment> getArticleCommentByInfoId(String infoId);
+
+    public List<ArticleInfo>  getLatestTenArticleInfo();
 
 
 }

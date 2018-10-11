@@ -4,6 +4,8 @@
 ###description
 * SSH框架初始化
 * Model Dao Service 初设计
+* ApplicationContext配置事务后，需要在service层加@Transactional注解
+  Dao层才能访问数据库
 
 
 ##version 1.0.1
@@ -42,5 +44,5 @@
   form表单无法提交。
 * <form action="userController/login" method="post">
   <form action="/userController/login" method="post">
-  加/不然404
+  action加/不然404
 

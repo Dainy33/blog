@@ -4,14 +4,13 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table
+@Table(name = "tourist")
 public class Tourist {
 
     @Id
     @Column
-    private UUID touristId;
-
     private String name;
+
     private String meta;
 
 

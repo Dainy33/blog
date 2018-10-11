@@ -13,7 +13,7 @@ public abstract class GenericDao<T extends Serializable, PK> {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-    public Session getSession(){
+    protected Session getSession(){
         return sessionFactory.getCurrentSession();
     }
 

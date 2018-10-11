@@ -2,11 +2,12 @@ package blog.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 
 @Entity
-@Table
+@Table(name = "articleContent")
 public class ArticleContent implements Serializable {
 
     @Id
@@ -15,6 +16,8 @@ public class ArticleContent implements Serializable {
 
     private String  articleInfoId;
     private String content;
+    private Date createDate;
+
 
     public ArticleContent() {
     }
@@ -47,6 +50,14 @@ public class ArticleContent implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
 /**

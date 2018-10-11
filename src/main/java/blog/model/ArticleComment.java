@@ -7,7 +7,7 @@ import java.util.UUID;
 
 
 @Entity
-@Table
+@Table(name = "articleComment")
 public class ArticleComment implements Serializable {
 
     //@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +18,8 @@ public class ArticleComment implements Serializable {
 
     private String articleInfoId;
     private String comment;
+    private Date createDate;
+
 
     public ArticleComment() {
     }
@@ -50,6 +52,14 @@ public class ArticleComment implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
 /**

@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table
+@Table(name = "articleInfo")
 public class ArticleInfo implements Serializable {
 
     @Id
@@ -18,9 +18,10 @@ public class ArticleInfo implements Serializable {
     private String title;
     private String type;
     private String author;
-
-    private String createBy;
     private Date createDate;
+
+    //暂时不需要默认为null即可
+    private String createBy;
     private String updateBy;
     private Date updateDate;
     private String version;

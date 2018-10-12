@@ -20,19 +20,19 @@
 
     <!-- CSS
 	================================================== -->
-    <link rel="stylesheet" href="css/zerogrid.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/zerogrid.css">
+    <link rel="stylesheet" href="../../css/style.css">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-    <link rel="stylesheet" href="css/menu.css">
-    <script src="js/jquery1111.min.js" type="text/javascript"></script>
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="../../css/menu.css">
+    <script src="../../js/jquery1111.min.js" type="text/javascript"></script>
+    <script src="../../js/script.js"></script>
 
     <!-- Owl Carousel Assets -->
-    <link href="owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="../../owl-carousel/owl.carousel.css" rel="stylesheet">
     <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
 
     <!--[if lt IE 8]>
@@ -55,7 +55,7 @@
 <div class="wrap-body">
     <div id='cssmenu' class="align-center">
         <ul>
-            <li class="active"><a href='index.jsp'><span>Home</span></a></li>
+            <li class="active"><a href='/'><span>Home</span></a></li>
             <li class=' has-sub'><a href='#'><span>Blog</span></a>
                 <ul>
                     <li class='has-sub'><a href='#'><span>Item 1</span></a>
@@ -72,8 +72,8 @@
                     </li>
                 </ul>
             </li>
-            <li><a href='single.jsp'><span>About</span></a></li>
-            <li class='last'><a href='contact.jsp'><span>Contacts</span></a></li>
+            <li><a href='/single'><span>About</span></a></li>
+            <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">

@@ -52,3 +52,8 @@
 加入前端页面后，页面读取不到css  js  images等任何文件
 SpringMVC 中 需要配置 对静态资源文件的访问
 
+##version web1.0.2
+##description
+* 将index single contact已到WEB-INF/views 对页面的访问通过DispatcherServlet
+  视图的生成通过Controller
+  

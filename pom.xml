@@ -56,6 +56,7 @@
             <version>1.6.4</version>
         </dependency>
 
+        <!--JSTL 1.2 + Servlet 3.0 + Tomcat 7-->
         <!--servlet3.0+容器-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -78,7 +79,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JSTL begin -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -199,6 +199,18 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jacksonVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
         </dependency>
 
         <dependency>

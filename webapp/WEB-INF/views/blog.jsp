@@ -72,11 +72,12 @@
                             element.description,
                             "</p>",
                             "</div>",
-                            "</li>"].join('\n');
+                            "</li>",
+                            "<br>"].join('\n');
                         $("#articleInfoDiv").append(html);
                     })
                 },
-                error: function (res) {
+                error: function (response) {
 
                 }
             });
@@ -131,11 +132,8 @@
                         </div>
                         <%--正文--%>
                         <div id="articleInfoDiv">
-                            <%--调用getLatestTenArticleInfo--%>
-                            <%--
-                            <a href="/articleController/getLatestTenArticleInfo">这里以后会展示十篇最新文章的Info</a>
-                            --%>
-                            <h1>最新文章</h1>
+
+                            <br><h1 id =''>最新文章</h1><br>
 
 
                         </div>

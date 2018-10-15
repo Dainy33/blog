@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -31,6 +32,7 @@ public class ArticleServiceImpl implements IArticleService {
     public String createArticleInfo(ArticleInfo articleInfo) {
         String articleInfoId = UUID.randomUUID().toString();
         articleInfo.setArticleInfoId(articleInfoId);
+        articleInfo.setCreateDate(new Date());
         articleInfoDao.save(articleInfo);
         return articleInfoId;
     }
@@ -89,7 +91,7 @@ public class ArticleServiceImpl implements IArticleService {
         return articleInfo;
     }
 
-    public List<Map<ArticleInfo, ArticleContent>> getArticleContentByInfoId(String infoId) {
+    public List<ArticleContent> getArticleContentByInfoId(String infoId) {
         return null;
     }
 

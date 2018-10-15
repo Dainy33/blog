@@ -88,3 +88,13 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 ##description
 * Blog.jsp完成
 * Specific半成品,不知道参数到底传没传过去
+
+##version web1.0.5
+##description
+* js是肯定不能直接用<% %>中java代码的变量的
+* <% String Id = request.getParameter("infoId");%>
+* <scripts>
+        var infoId = "<%= Id%>";
+  </scripts>
+
+

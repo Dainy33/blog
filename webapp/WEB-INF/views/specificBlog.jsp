@@ -1,3 +1,4 @@
+<%@ page import="java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -48,41 +49,43 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-
-    <%  infoId:request.getParameter("infoId");%>
+    <% String Id = request.getParameter("infoId");%>
 
     <script>
         $(document).ready(function () {
+            var infoId = "<%= Id%>";
             $.ajax({
-                url: "<%=request.getContextPath()%>" + "/articleController/getArticleInfoByInfoId?infoId="+infoId,
+                url: "/articleController/getArticleInfoByInfoId?infoId="+infoId.toString(),
                 type: 'GET',
                 data: {
 
                 },
                 dataType: "json",
                 success: function (response) {
-                    var obj = response;
                     $.each(obj, function (index, element) {
-                        var html = ["<li>",
-                            "<div>",
-                            "<h2>",
-                            "<a href=\"/\">",
-                            element.title,
-                            "</a>",
-                            "</h2>",
-                            "<h4 align='right'>",
-                            element.author,
-                            "</h4>",
-                            "<p>",
-                            element.description,
-                            "</p>",
-                            "</div>",
-                            "</li>"].join('\n');
-                        $(".excerpt").append(html);
+                        $(".time").html(element.dateTime);
+                        $(".entry-title").html(element.title);
                     })
                 },
-                error: function (res) {
+                error: function (response) {
+                }
+            });
+        })
+        $(document).ready(function () {
+            var infoId = "<%= Id%>";
+            $.ajax({
+                url: "/articleController/getArticleContentByInfoId?infoId="+infoId.toString(),
+                type: 'GET',
+                data: {
 
+                },
+                dataType: "json",
+                success: function (response) {
+                    $.each(obj, function (index, element) {
+                        $(".entry-content").html(element.content);
+                    })
+                },
+                error: function (response) {
                 }
             });
         })
@@ -112,80 +115,14 @@
             <article class="post zerogrid">
                 <div class="row wrap-post"><!--Start Box-->
                     <div class="entry-header">
-                        <span class="time">June 8, 2016</span>
-                        <h2 class="entry-title"><a href="#">RETRO GALLERY: FRAGMENTING PERSISTENT FLIGHT AND
-                            PATHOLOGY</a></h2>
-                        <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
-                    </div>
-                    <div class="post-thumbnail-wrap">
-                        <img src="images/1.jpg">
+                        <span class="time">CREATEDATE</span>
+                        <h2 class="entry-title">BLOG TITLE</h2>
                     </div>
                     <div class="entry-content">
-                        <%--指定blog内容的简介--%>
-                        <div class="excerpt">
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum exercitation ullamco laboris nisi ut
-                                aliquip.
-                            </p>
-                        </div>
-                        <%--指定blog内容的正文--%>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                            et justo duo dolores et ea rebum. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                            et justo duo dolores et ea rebum.
-                        </p>
-                        <blockquote>
-                            <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet
-                                vultatup duista.
-                            </p>
-                        </blockquote>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
-                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
-                            blandit praesent luptatum zzril.
-                        </p>
-                        <h2>Heading 1</h2>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-                            vulputate velit esse lorem ipsum dolor sit amet.
-                        </p>
-                        <h2>Heading 2</h2>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
-                            illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo.
-                        </p>
-                        <h2>Heading 3</h2>
-                        <p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum
-                            hendrerit in vulputate velit esse molestie.
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                            et justo duo dolores et ea rebum.
-                        </p>
-                        <p>
-                            <code>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-                                amet.</code>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                            et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                            Lorem ipsum dolor sit amet.
-                        </p>
-                        <div class="note">
-                            <ol>
-                                <li>Lorem ipsum</li>
-                                <li>Sit amet vultatup nonumy</li>
-                                <li>Duista sed diam</li>
-                            </ol>
-                            <div class="clear"></div>
-                        </div>
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
-                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
-                            blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
-                            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
-                            ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.</p>
+                        <%--ArticleInfo--%>
+
+                        <%--ArticleContent--%>
+
                     </div>
                 </div>
             </article>

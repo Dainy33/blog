@@ -1,38 +1,41 @@
 package blog.controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 @Controller
 public class IndexController {
     @RequestMapping("/")
-    public String index() {
+    public String index(HttpServletRequest request, HttpServletResponse response) {
         return "index";
     }
 
     @RequestMapping("/about")
-    public String about(){
+    public String about(HttpServletRequest request, HttpServletResponse response){
         return "about";
     }
 
     @RequestMapping("/contact")
-    public String contact(){
+    public String contact(HttpServletRequest request, HttpServletResponse response){
         return "contact";
     }
 
     @RequestMapping("/blog")
-    public String blog(){
+    public String blog(HttpServletRequest request, HttpServletResponse response){
         return "blog";
     }
 
     @RequestMapping("/specificBlog")
-    public String specificBlog(@RequestParam String infoId,Model model){
+    public String specificBlog(HttpServletRequest request, HttpServletResponse response, @RequestParam String infoId){
         //infoId怎么给specificBlog视图
-        System.out.println(infoId);
-        model.addAttribute("infoId",infoId);
+        request.setAttribute("infoId",infoId);
         return "specificBlog";
     }
 }

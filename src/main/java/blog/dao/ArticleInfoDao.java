@@ -23,6 +23,13 @@ public class ArticleInfoDao extends GenericDao<ArticleInfo,Integer>{
         query.setMaxResults(10);
         return query.list();
     }
+
+    public ArticleInfo getArticleInfoByInfoId(String infoId) {
+        String hql = "from ArticleInfo where articleInfoId = :articleInfoId";
+        Query query =getSession().createQuery(hql);
+        query.setParameter("articleInfoId",infoId);
+        return (ArticleInfo)query.uniqueResult();
+    }
 }
 /**
  * @program: blog

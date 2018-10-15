@@ -84,6 +84,11 @@ public class ArticleServiceImpl implements IArticleService {
         return null;
     }
 
+    public ArticleInfo getArticleInfoByInfoId(String infoId) {
+        ArticleInfo articleInfo = articleInfoDao.getArticleInfoByInfoId(infoId);
+        return articleInfo;
+    }
+
     public List<Map<ArticleInfo, ArticleContent>> getArticleContentByInfoId(String infoId) {
         return null;
     }

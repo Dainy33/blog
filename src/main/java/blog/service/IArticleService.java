@@ -34,9 +34,11 @@ public interface IArticleService {
 
     public List<Map<ArticleInfo,ArticleContent>> getArticleContentByInfo(ArticleInfo info);
 
-    public List<Map<ArticleInfo,ArticleContent>> getArticleContentByInfoId(String infoId);
+    public ArticleInfo getArticleInfoByInfoId(String infoId);
 
     public List<ArticleComment> getArticleCommentByInfoId(String infoId);
+
+    public List<Map<ArticleInfo,ArticleContent>> getArticleContentByInfoId(String infoId);
 
     public List<ArticleInfo>  getLatestTenArticleInfo();
 

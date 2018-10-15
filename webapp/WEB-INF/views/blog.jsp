@@ -48,6 +48,41 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "<%=request.getContextPath()%>" + "/articleController/getLatestTenArticleInfo",
+                type: 'GET',
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    var obj = response;
+                    $.each(obj, function (index, element) {
+                        var html = ["<li>",
+                            "<div>",
+                            "<h2>",
+                            "<a href=\"/specificBlog?infoId="+element.articleInfoId+"\">",
+                            element.title,
+                            "</a>",
+                            "</h2>",
+                            "<h4 align='right'>",
+                            element.author,
+                            "</h4>",
+                            "<p>",
+                            element.description,
+                            "</p>",
+                            "</div>",
+                            "</li>"].join('\n');
+                        $("#articleInfoDiv").append(html);
+                    })
+                },
+                error: function (res) {
+
+                }
+            });
+        })
+    </script>
+
 </head>
 
 <body>
@@ -82,19 +117,27 @@
                     <div class="entry-content">
                         <%--blog展示主页的简介--%>
                         <div class="excerpt">
-                            <p>A man is not old as long as he is seeking something. A man is not old until regrets take the place of dreams.
+                            <p>A man is not old as long as he is seeking something. A man is not old until regrets take
+                                the place of dreams.
                             </p>
                             <%--引用--%>
                             <blockquote>
-                                <p>If you would go up high , then use your own legs ! Do not let yourselves carried aloft;
-                                    do not seat yourselves on other people's backs and heads .(F.W .Nietzsche , German Philosopher)
+                                <p>If you would go up high , then use your own legs ! Do not let yourselves carried
+                                    aloft;
+                                    do not seat yourselves on other people's backs and heads .(F.W .Nietzsche , German
+                                    Philosopher)
                                 </p>
                             </blockquote>
                         </div>
                         <%--正文--%>
-                        <div>
+                        <div id="articleInfoDiv">
                             <%--调用getLatestTenArticleInfo--%>
-                            <a href = "/articleController/getLatestTenArticleInfo">这里以后会展示十篇最新文章的Info</a>
+                            <%--
+                            <a href="/articleController/getLatestTenArticleInfo">这里以后会展示十篇最新文章的Info</a>
+                            --%>
+                            <h1>最新文章</h1>
+
+
                         </div>
                     </div>
                 </div>

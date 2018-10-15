@@ -24,6 +24,7 @@ public class TestController {
     @ResponseBody
     public String createInfoTest() {
         ArticleInfo articleInfo = new ArticleInfo(UUID.randomUUID().toString(),"First test article", "Test", "Dainy");
+        articleInfo.setDescription("描述信息123456");
         iArticleService.createArticleInfo(articleInfo);
         return "Banana!";
     }

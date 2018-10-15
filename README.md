@@ -62,3 +62,29 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 ##description
 * 新增Blog主页和Blog具体页
 * 干掉topBar的blog的下拉菜单
+* ajax模板
+            $.ajax({
+
+                url: "请求地址",
+
+                type: "请求方式",
+
+                data: "请求参数",
+
+                dataType: "服务器返回数据类型",
+
+                success: "服务器处理正常后对应的回调函数",
+
+                error: "服务器出错对应的回调函数"
+
+            });
+*  . 对应class
+    $(".articleInfoDiv").append("<h4>res.title</h4>");
+   # 对应id
+   $("#articleInfoDiv").append("<h4>res.title</h4>");
+   
+   
+##version web1.0.4
+##description
+* Blog.jsp完成
+* Specific半成品,不知道参数到底传没传过去

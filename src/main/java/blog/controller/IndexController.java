@@ -2,6 +2,8 @@ package blog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
 
 
 @Controller
@@ -27,7 +29,10 @@ public class IndexController {
     }
 
     @RequestMapping("/specificBlog")
-    public String specificBlog(){
+    public String specificBlog(@RequestParam String infoId,Model model){
+        //infoId怎么给specificBlog视图
+        System.out.println(infoId);
+        model.addAttribute("infoId",infoId);
         return "specificBlog";
     }
 }

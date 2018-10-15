@@ -48,6 +48,45 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
+
+    <%  infoId:request.getParameter("infoId");%>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "<%=request.getContextPath()%>" + "/articleController/getArticleInfoByInfoId?infoId="+infoId,
+                type: 'GET',
+                data: {
+
+                },
+                dataType: "json",
+                success: function (response) {
+                    var obj = response;
+                    $.each(obj, function (index, element) {
+                        var html = ["<li>",
+                            "<div>",
+                            "<h2>",
+                            "<a href=\"/\">",
+                            element.title,
+                            "</a>",
+                            "</h2>",
+                            "<h4 align='right'>",
+                            element.author,
+                            "</h4>",
+                            "<p>",
+                            element.description,
+                            "</p>",
+                            "</div>",
+                            "</li>"].join('\n');
+                        $(".excerpt").append(html);
+                    })
+                },
+                error: function (res) {
+
+                }
+            });
+        })
+    </script>
 </head>
 
 <body>

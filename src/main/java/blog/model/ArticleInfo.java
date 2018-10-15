@@ -19,6 +19,7 @@ public class ArticleInfo implements Serializable {
     private String type;
     private String author;
     private Date createDate;
+    private String description;
 
     //暂时不需要默认为null即可
     private String createBy;
@@ -142,6 +143,14 @@ public class ArticleInfo implements Serializable {
 
     public void setPrivate(Boolean aPrivate) {
         isPrivate = aPrivate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 /**

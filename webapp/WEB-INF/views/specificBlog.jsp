@@ -55,23 +55,9 @@
     <div id='cssmenu' class="align-center">
         <ul>
             <li><a href='/'><span>Home</span></a></li>
-            <li class=' has-sub'><a href='#'><span>Blog</span></a>
-                <ul>
-                    <li class='has-sub'><a href='#'><span>Item 1</span></a>
-                        <ul>
-                            <li><a href='#'><span>Sub Item</span></a></li>
-                            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has-sub'><a href='#'><span>Item 2</span></a>
-                        <ul>
-                            <li><a href='#'><span>Sub Item</span></a></li>
-                            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="active"><a href='/single'><span>About</span></a></li>
+            <li class="active   "><a href='/blog'><span>Blog</span></a></li>
+
+            <li><a href='/about'><span>About</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
@@ -96,12 +82,14 @@
                         <img src="images/1.jpg">
                     </div>
                     <div class="entry-content">
+                        <%--指定blog内容的简介--%>
                         <div class="excerpt">
                             <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                                 officia deserunt mollit anim id est laborum exercitation ullamco laboris nisi ut
                                 aliquip.
                             </p>
                         </div>
+                        <%--指定blog内容的正文--%>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
                             et justo duo dolores et ea rebum. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
@@ -136,7 +124,8 @@
                             et justo duo dolores et ea rebum.
                         </p>
                         <p>
-                            <code>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</code>
+                            <code>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+                                amet.</code>
                         </p>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam

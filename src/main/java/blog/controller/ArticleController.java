@@ -3,12 +3,16 @@ package blog.controller;
 import blog.model.ArticleContent;
 import blog.model.ArticleInfo;
 import blog.service.IArticleService;
+import blog.utils.ResponseInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.xml.ws.Response;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -39,12 +43,13 @@ public class ArticleController {
         return "common/success";
     }
 
-    //首页显示最新的N篇文章 N=10
+    //返回最新的N篇文章 N=10
     @RequestMapping(value = "getLatestTenArticleInfo",method = RequestMethod.GET)
-    public String getLatestTenArticleInfo(Model model){
-        iArticleService.getLatestTenArticleInfo();
-
-        return "article/latestTenArticleInfo";
+    @ResponseBody
+    public ResponseInfo getLatestTenArticleInfo(Model model){
+        List<ArticleInfo> latestTenArticleInfo = iArticleService.getLatestTenArticleInfo();
+        ResponseInfo responseInfo = ResponseInfo.createQueryListResponse(latestTenArticleInfo,10,"10","10");
+        return responseInfo;
     }
 
 }

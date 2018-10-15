@@ -57,3 +57,8 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 * 将index single contact已到WEB-INF/views 对页面的访问通过DispatcherServlet
   视图的生成通过Controller
 * 增加JsonUtil工具类
+
+##version web1.0.3
+##description
+* 新增Blog主页和Blog具体页
+* 干掉topBar的blog的下拉菜单

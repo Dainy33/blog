@@ -55,8 +55,8 @@
     <div id='cssmenu' class="align-center">
         <ul>
             <li><a href='/'><span>Home</span></a></li>
-            <li class="active   "><a href='/blog'><span>Blog</span></a></li>
-            <li><a href='/about'><span>About</span></a></li>
+            <li><a href='/blog'><span>Blog</span></a></li>
+            <li class="active"><a href='/about'><span>About</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
@@ -73,29 +73,76 @@
                 <div class="row wrap-post"><!--Start Box-->
                     <div class="entry-header">
                         <span class="time">June 8, 2016</span>
-                        <h2 class="entry-title"><a href="#">BLOG GALLERY</a></h2>
-                        <span class="cat-links"><a href="#">STUDY</a>, <a href="#">LIFESTYLE</a></span>
+                        <h2 class="entry-title"><a href="#">RETRO GALLERY: FRAGMENTING PERSISTENT FLIGHT AND
+                            PATHOLOGY</a></h2>
+                        <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
                         <img src="images/1.jpg">
                     </div>
                     <div class="entry-content">
-                        <%--blog展示主页的简介--%>
                         <div class="excerpt">
-                            <p>A man is not old as long as he is seeking something. A man is not old until regrets take the place of dreams.
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                officia deserunt mollit anim id est laborum exercitation ullamco laboris nisi ut
+                                aliquip.
                             </p>
-                            <%--引用--%>
-                            <blockquote>
-                                <p>If you would go up high , then use your own legs ! Do not let yourselves carried aloft;
-                                    do not seat yourselves on other people's backs and heads .(F.W .Nietzsche , German Philosopher)
-                                </p>
-                            </blockquote>
                         </div>
-                        <%--正文--%>
-                        <div>
-                            <%--调用getLatestTenArticleInfo--%>
-                            <a href = "/articleController/getLatestTenArticleInfo">这里以后会展示十篇最新文章的Info</a>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum.
+                        </p>
+                        <blockquote>
+                            <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet
+                                vultatup duista.
+                            </p>
+                        </blockquote>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                            blandit praesent luptatum zzril.
+                        </p>
+                        <h2>Heading 1</h2>
+                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
+                            vulputate velit esse lorem ipsum dolor sit amet.
+                        </p>
+                        <h2>Heading 2</h2>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                            illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo.
+                        </p>
+                        <h2>Heading 3</h2>
+                        <p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum
+                            hendrerit in vulputate velit esse molestie.
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum.
+                        </p>
+                        <p>
+                            <code>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</code>
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                            Lorem ipsum dolor sit amet.
+                        </p>
+                        <div class="note">
+                            <ol>
+                                <li>Lorem ipsum</li>
+                                <li>Sit amet vultatup nonumy</li>
+                                <li>Duista sed diam</li>
+                            </ol>
+                            <div class="clear"></div>
                         </div>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+                            illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+                            blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem
+                            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                            ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.</p>
                     </div>
                 </div>
             </article>

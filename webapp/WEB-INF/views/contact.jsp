@@ -55,23 +55,9 @@
     <div id='cssmenu' class="align-center">
         <ul>
             <li><a href='/'><span>Home</span></a></li>
-            <li class=' has-sub'><a href='#'><span>Blog</span></a>
-                <ul>
-                    <li class='has-sub'><a href='#'><span>Item 1</span></a>
-                        <ul>
-                            <li><a href='#'><span>Sub Item</span></a></li>
-                            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has-sub'><a href='#'><span>Item 2</span></a>
-                        <ul>
-                            <li><a href='#'><span>Sub Item</span></a></li>
-                            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><a href='/single'><span>About</span></a></li>
+            <li><a href='/blog'><span>Blog</span></a></li>
+
+            <li><a href='/about'><span>About</span></a></li>
             <li class='active last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>

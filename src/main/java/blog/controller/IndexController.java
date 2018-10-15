@@ -1,7 +1,6 @@
 package blog.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -12,14 +11,24 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/single")
+    @RequestMapping("/about")
     public String about(){
-        return "single";
+        return "about";
     }
 
     @RequestMapping("/contact")
     public String contact(){
         return "contact";
+    }
+
+    @RequestMapping("/blog")
+    public String blog(){
+        return "blog";
+    }
+
+    @RequestMapping("/specificBlog")
+    public String specificBlog(){
+        return "specificBlog";
     }
 }
 /**

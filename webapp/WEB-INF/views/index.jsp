@@ -56,23 +56,8 @@
     <div id='cssmenu' class="align-center">
         <ul>
             <li class="active"><a href='/'><span>Home</span></a></li>
-            <li class=' has-sub'><a href='#'><span>Blog</span></a>
-                <ul>
-                    <li class='has-sub'><a href='#'><span>Item 1</span></a>
-                        <ul>
-                            <li><a href='#'><span>Sub Item</span></a></li>
-                            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                        </ul>
-                    </li>
-                    <li class='has-sub'><a href='#'><span>Item 2</span></a>
-                        <ul>
-                            <li><a href='#'><span>Sub Item</span></a></li>
-                            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><a href='/single'><span>About</span></a></li>
+                <li><a href='/blog'><span>Blog</span></a></li>
+            <li><a href='/about'><span>About</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
@@ -173,7 +158,7 @@
                             mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam
                             Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum
                             omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                        <a href="single.jsp">More Details</a>
+                        <a href="about.jsp">More Details</a>
                     </div>
                 </div>
             </article>
@@ -197,7 +182,7 @@
                             mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam
                             Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum
                             omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                        <a href="single.jsp">More Details</a>
+                        <a href="about.jsp">More Details</a>
                     </div>
                 </div>
             </article>
@@ -221,7 +206,7 @@
                             mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam
                             Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum
                             omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                        <a href="single.jsp">More Details</a>
+                        <a href="about.jsp">More Details</a>
                     </div>
                 </div>
             </article>

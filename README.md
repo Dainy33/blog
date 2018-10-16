@@ -107,5 +107,6 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 * 实现了写Info和content
 * 页面跳转和绝对路径问题仍存在
 * <span><input>不在一行
+* 前台到Servlet中文乱码
 
 

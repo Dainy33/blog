@@ -48,7 +48,7 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="/editormd/css/editormd.min.css" />
+    <link rel="stylesheet" href="/editormd/css/editormd.min.css"/>
     <script src="/editormd/jquery.min.js"></script>
     <script src="/editormd/editormd.min.js"></script>
 
@@ -81,13 +81,28 @@
                         <h2 class="entry-title"><a href="#">BLOG WRITING: SEIZE THE OPPORTUNITY</a></h2>
                         <span class="cat-links"><a href="#">RECORDING</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
-                    <form action = "/articleController/writing" method = "post">
-                        <input type="text" value="标题:" name="title" >
-                        <input type="text" value="作者:" name="author">
-                        <input type="text" value="简介:" name="description">
+                    <form action="/articleController/writing" method="post">
+<%--                        <table>
+                            <tr>
+                                <td>标题:</td>
+                                <td><input type="text" name="title"></td>
+                            </tr>
+                            <tr>
+                                <td>作者:</td>
+                                <td><input type="text" name="author"></td>
+                            </tr>
+                            <tr>
+                                <td>简介:</td>
+                                <td><input type="text" name="description"></td>
+                            </tr>
+                        </table>--%>
+                        <span>标题:</span><input type="text" name="title">
+                        <span>作者:</span><input type="text" name="author">
+                        <span>简介:</span><input type="text" name="description">
                         <div class="entry-content">
                             <div class="editormd" id="content-editor">
-                                <textarea class="editormd-markdown-textarea" name="content-editor-markdown-doc"></textarea>
+                                <textarea class="editormd-markdown-textarea"
+                                          name="content-editor-markdown-doc"></textarea>
                                 <textarea class="editormd-html-textarea" name="content"></textarea>
                             </div>
                         </div>
@@ -163,20 +178,19 @@
     </script>
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             editormd("content-editor", { // 和上面的名字保持一致
-                width   : "100%",
-                height  : 750,
-                syncScrolling : "single",
-                path    : "/editormd/lib/",// 项目中lib的目录
-                saveHTMLToTextarea : true ,// 影响后端是否能取到文档中的值
-
+                width: "100%",
+                height: 750,
+                syncScrolling: "single",
+                path: "/editormd/lib/",// 项目中lib的目录
+                saveHTMLToTextarea: true,// 影响后端是否能取到文档中的值
 
 
                 /** upload picture file configuration **/
-                imageUpload : true, // 开启上传功能
-                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"], // 接收的格式
-                imageUploadURL : "/uploadController/picUpload"// 匹配到后端的请求地址，比如用Springmvc的controller接收
+                imageUpload: true, // 开启上传功能
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"], // 接收的格式
+                imageUploadURL: "/uploadController/picUpload"// 匹配到后端的请求地址，比如用Springmvc的controller接收
                 //editor.md期望得到一个json格式的上传后的返回值，格式是这样的：
                 /*{
                     success : 0 | 1,           // 0 表示上传失败，1 表示上传成功

@@ -29,6 +29,10 @@ public class ArticleController {
 
         ArticleInfo articleInfo =new ArticleInfo();
         ArticleContent articleContent = new ArticleContent();
+        System.out.println(request.getParameter("title")+"\n" +
+                request.getParameter("author")+"\n" +
+                request.getParameter("description")+"\n"+
+                request.getParameter("content"));
 
         articleInfo.setTitle(request.getParameter("title"));
         articleInfo.setAuthor(request.getParameter("author"));

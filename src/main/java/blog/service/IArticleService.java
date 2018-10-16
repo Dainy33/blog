@@ -38,7 +38,7 @@ public interface IArticleService {
 
     public List<ArticleComment> getArticleCommentByInfoId(String infoId);
 
-    public List<ArticleContent> getArticleContentByInfoId(String infoId);
+    public ArticleContent getArticleContentByInfoId(String infoId);
 
     public List<ArticleInfo>  getLatestTenArticleInfo();
 

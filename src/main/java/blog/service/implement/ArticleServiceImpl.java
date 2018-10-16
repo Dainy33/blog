@@ -32,7 +32,7 @@ public class ArticleServiceImpl implements IArticleService {
     public String createArticleInfo(ArticleInfo articleInfo) {
         String articleInfoId = UUID.randomUUID().toString();
         articleInfo.setArticleInfoId(articleInfoId);
-        articleInfo.setCreateDate(new Date());
+        articleInfo.setCreateDate(new Date().toString());
         articleInfoDao.save(articleInfo);
         return articleInfoId;
     }
@@ -91,8 +91,9 @@ public class ArticleServiceImpl implements IArticleService {
         return articleInfo;
     }
 
-    public List<ArticleContent> getArticleContentByInfoId(String infoId) {
-        return null;
+    public ArticleContent getArticleContentByInfoId(String infoId) {
+        ArticleContent articleContent =articleContentDao.getArticleContentByInfoId(infoId);
+        return articleContent;
     }
 
     public List<ArticleComment> getArticleCommentByInfoId(String infoId) {

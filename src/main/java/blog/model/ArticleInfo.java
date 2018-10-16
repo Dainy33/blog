@@ -18,14 +18,10 @@ public class ArticleInfo implements Serializable {
     private String title;
     private String type;
     private String author;
-    private Date createDate;
+    private String createDate;
     private String description;
 
     //暂时不需要默认为null即可
-    private String createBy;
-    private String updateBy;
-    private Date updateDate;
-    private String version;
     private Boolean isDeleted;
     private Boolean isTop;
     private Boolean isOriginal;
@@ -73,46 +69,6 @@ public class ArticleInfo implements Serializable {
         this.author = author;
     }
 
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
     public Boolean getDeleted() {
         return isDeleted;
     }
@@ -151,6 +107,14 @@ public class ArticleInfo implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 }
 /**

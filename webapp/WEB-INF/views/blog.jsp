@@ -92,7 +92,7 @@
         <ul>
             <li><a href='/'><span>Home</span></a></li>
             <li class="active   "><a href='/blog'><span>Blog</span></a></li>
-            <li><a href='/about'><span>About</span></a></li>
+            <li><a href='/about'><span>Writing</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>

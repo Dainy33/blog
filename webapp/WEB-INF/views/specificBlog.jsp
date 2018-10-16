@@ -52,35 +52,37 @@
     <% String Id = request.getParameter("infoId");%>
 
     <script>
-        $(document).ready(function () {
+        function articleInfo() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/articleController/getArticleInfoByInfoId?infoId="+infoId.toString(),
+                url: "/articleController/getArticleInfoByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
-                data: {
-
-                },
+                data: {},
                 dataType: "json",
                 success: function (response) {
+                    var obj = response;
                     $.each(obj, function (index, element) {
-                        $(".time").html(element.dateTime);
+                        $(".time").html(element.createDate);
                         $(".entry-title").html(element.title);
                     })
                 },
                 error: function (response) {
                 }
             });
-        })
-        $(document).ready(function () {
+
+            articleContent();
+
+        }
+
+        function articleContent() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/articleController/getArticleContentByInfoId?infoId="+infoId.toString(),
+                url: "/articleController/getArticleContentByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
-                data: {
-
-                },
+                data: {},
                 dataType: "json",
                 success: function (response) {
+                    var obj = response;
                     $.each(obj, function (index, element) {
                         $(".entry-content").html(element.content);
                     })
@@ -88,7 +90,11 @@
                 error: function (response) {
                 }
             });
-        })
+        }
+
+        $(document).ready(articleInfo());
+
+
     </script>
 </head>
 
@@ -99,7 +105,7 @@
             <li><a href='/'><span>Home</span></a></li>
             <li class="active   "><a href='/blog'><span>Blog</span></a></li>
 
-            <li><a href='/about'><span>About</span></a></li>
+            <li><a href='/about'><span>Writing</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>

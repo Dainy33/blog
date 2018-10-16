@@ -97,4 +97,9 @@ SpringMVC 中 需要配置 对静态资源文件的访问
         var infoId = "<%= Id%>";
   </scripts>
 
+##version web1.0.6
+##description
+* 加入editormd插件
+* 开始编写Writing页面
+
 

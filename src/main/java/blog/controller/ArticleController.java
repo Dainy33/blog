@@ -57,13 +57,22 @@ public class ArticleController {
     @ResponseBody
     public String getArticleInfoByInfoId(HttpServletRequest request, HttpServletResponse response,@RequestParam String infoId){
 
-        System.out.println("getArticleInfoByInfoId");
         ArticleInfo articleInfo = iArticleService.getArticleInfoByInfoId(infoId);
         String responseInfo = JsonUtil.beanToJson(articleInfo);
         responseInfo = "["+responseInfo+"]";
         return responseInfo;
     }
 
+    @RequestMapping(value = "/getArticleContentByInfoId",method = RequestMethod.GET)
+    @ResponseBody
+    public String getArticleContentByInfoId(HttpServletRequest request, HttpServletResponse response,@RequestParam String infoId){
+
+        System.out.println("getArticleInfoByInfoId");
+        ArticleContent articleContent = iArticleService.getArticleContentByInfoId(infoId);
+        String responseInfo = JsonUtil.beanToJson(articleContent);
+        responseInfo = "["+responseInfo+"]";
+        return responseInfo;
+    }
 }
 /**
  * @program: blog

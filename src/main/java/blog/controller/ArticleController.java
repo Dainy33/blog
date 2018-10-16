@@ -23,14 +23,25 @@ public class ArticleController {
     @Resource
     IArticleService iArticleService;
 
-    @RequestMapping(value = "/write",method = RequestMethod.POST)
-    public String write(HttpServletRequest request, HttpServletResponse response,ArticleInfo articleInfo, ArticleContent articleContent){
 
-        String articleInfoId = iArticleService.createArticleInfo(articleInfo);
-        articleContent.setArticleInfoId(articleInfoId);
+    @RequestMapping(value = "/writing",method = RequestMethod.POST)
+    public String write(HttpServletRequest request, HttpServletResponse response){
+
+        ArticleInfo articleInfo =new ArticleInfo();
+        ArticleContent articleContent = new ArticleContent();
+
+        articleInfo.setTitle(request.getParameter("title"));
+        articleInfo.setAuthor(request.getParameter("author"));
+        articleInfo.setDescription(request.getParameter("description"));
+
+        String infoId = iArticleService.createArticleInfo(articleInfo);
+
+        articleContent.setArticleInfoId(infoId);
+        articleContent.setContent(request.getParameter("content"));
+
         iArticleService.createArticleContent(articleContent);
 
-        return "common/success";
+        return "index";
     }
 
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
@@ -67,7 +78,6 @@ public class ArticleController {
     @ResponseBody
     public String getArticleContentByInfoId(HttpServletRequest request, HttpServletResponse response,@RequestParam String infoId){
 
-        System.out.println("getArticleInfoByInfoId");
         ArticleContent articleContent = iArticleService.getArticleContentByInfoId(infoId);
         String responseInfo = JsonUtil.beanToJson(articleContent);
         responseInfo = "["+responseInfo+"]";

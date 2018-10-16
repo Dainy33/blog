@@ -102,4 +102,10 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 * 加入editormd插件
 * 开始编写Writing页面
 
+##version web1.1.0
+##description
+* 实现了写Info和content
+* 页面跳转和绝对路径问题仍存在
+* <span><input>不在一行
+
 

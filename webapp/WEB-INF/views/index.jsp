@@ -49,6 +49,8 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
+    <% String contextPath = request.getContextPath();%>
+
 </head>
 
 <body>
@@ -57,17 +59,17 @@
         <ul>
             <li class="active"><a href='/'><span>Home</span></a></li>
                 <li><a href='/blog'><span>Blog</span></a></li>
-            <li><a href='/about'><span>Writing</span></a></li>
+            <li><a href='/writing'><span>Writing</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">
         <div class="logo">
-            <a href="#"><img src="images/logo.png"/></a>
+            <a href="#"><img src="<%=contextPath%>/images/logo.png"/></a>
         </div>
         <div id="owl-slide" class="owl-carousel">
             <div class="item">
-                <img src="images/slider-1.jpg"/>
+                <img src="<%=contextPath%>/images/slider-1.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -78,7 +80,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="images/slider-2.jpg"/>
+                <img src="<%=contextPath%>/images/slider-2.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -89,7 +91,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="images/slider-3.jpg"/>
+                <img src="<%=contextPath%>/images/slider-3.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -100,7 +102,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="images/slider-4.jpg"/>
+                <img src="<%=contextPath%>/images/slider-4.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -111,7 +113,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="images/slider-5.jpg"/>
+                <img src="<%=contextPath%>/images/slider-5.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -122,7 +124,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="images/slider-6.jpg"/>
+                <img src="<%=contextPath%>/images/slider-6.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -148,7 +150,7 @@
                         <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="images/1.jpg">
+                        <img src="<%=contextPath%>/images/1.jpg">
                     </div>
                     <div class="entry-content">
                         <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur
@@ -158,7 +160,7 @@
                             mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam
                             Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum
                             omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                        <a href="about.jsp">More Details</a>
+                        <a href="writing.jsp">More Details</a>
                     </div>
                 </div>
             </article>
@@ -172,7 +174,7 @@
                         <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="images/2.jpg">
+                        <img src="<%=contextPath%>/images/2.jpg">
                     </div>
                     <div class="entry-content">
                         <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur
@@ -182,7 +184,7 @@
                             mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam
                             Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum
                             omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                        <a href="about.jsp">More Details</a>
+                        <a href="writing.jsp">More Details</a>
                     </div>
                 </div>
             </article>
@@ -196,7 +198,7 @@
                         <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="images/3.jpg">
+                        <img src="<%=contextPath%>/images/3.jpg">
                     </div>
                     <div class="entry-content">
                         <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur
@@ -206,7 +208,7 @@
                             mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam
                             Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum
                             omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                        <a href="about.jsp">More Details</a>
+                        <a href="writing.jsp">More Details</a>
                     </div>
                 </div>
             </article>
@@ -220,7 +222,7 @@
                 <div class="col-1-3 col-footer-1">
                     <div class="wrap-col">
                         <h3>About</h3>
-                        <a href="index.jsp"><img src="images/avatar.jpg"/></a>
+                        <a href="index.jsp"><img src="<%=contextPath%>/images/avatar.jpg"/></a>
                         <p>Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Sed consequat, augue
                             condimentum fermentum gravida, metus elit vehicula dui.</p>
                     </div>

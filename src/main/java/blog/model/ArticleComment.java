@@ -17,7 +17,10 @@ public class ArticleComment implements Serializable {
     private String commentId;
 
     private String articleInfoId;
+
+    @Column(columnDefinition="TEXT", nullable=true)
     private String comment;
+
     private Date createDate;
 
 

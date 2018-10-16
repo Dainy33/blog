@@ -48,6 +48,8 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
+    <% String contextPath =request.getContextPath();%>
+
 </head>
 
 <body>
@@ -57,13 +59,13 @@
             <li><a href='/'><span>Home</span></a></li>
             <li><a href='/blog'><span>Blog</span></a></li>
 
-            <li><a href='/about'><span>Writing</span></a></li>
+            <li><a href='/writing'><span>Writing</span></a></li>
             <li class='active last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">
         <div class="logo">
-            <a href="#"><img src="images/logo.png"/></a>
+            <a href="#"><img src="<%=contextPath%>/images/logo.png"/></a>
         </div>
     </header>
     <!--////////////////////////////////////Container-->
@@ -117,7 +119,7 @@
                 <div class="col-1-3 col-footer-1">
                     <div class="wrap-col">
                         <h3>About</h3>
-                        <a href="index.jsp"><img src="images/avatar.jpg"/></a>
+                        <a href="index.jsp"><img src="<%=contextPath%>/images/avatar.jpg"/></a>
                         <p>Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Sed consequat, augue
                             condimentum fermentum gravida, metus elit vehicula dui.</p>
                     </div>

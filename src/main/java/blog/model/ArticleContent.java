@@ -15,8 +15,9 @@ public class ArticleContent implements Serializable {
     private String contentId;
 
     private String  articleInfoId;
+
+    @Column(columnDefinition="TEXT", nullable=true)
     private String content;
-    private Date createDate;
 
 
     public ArticleContent() {
@@ -52,13 +53,7 @@ public class ArticleContent implements Serializable {
         this.content = content;
     }
 
-    public Date getCreateDate() {
-        return createDate;
-    }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
 }
 /**
  * @program: blog

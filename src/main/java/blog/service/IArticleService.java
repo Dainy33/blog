@@ -14,7 +14,7 @@ public interface IArticleService {
 
     public boolean createArticleContent(ArticleContent articleContent);
 
-    public boolean createArticleComment(ArticleComment articleComment);
+    public boolean createArticleComment(ArticleComment articleComment,String infoId);
 
     public boolean deleteArticleInfoByInfoId(String infoId);
 

@@ -48,43 +48,11 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <% String contextPath =request.getContextPath();%>
+    <link rel="stylesheet" href="/editormd/css/editormd.min.css" />
+    <script src="/editormd/jquery.min.js"></script>
+    <script src="/editormd/editormd.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: "<%=request.getContextPath()%>" + "/articleController/getLatestTenArticleInfo",
-                type: 'GET',
-                data: {},
-                dataType: "json",
-                success: function (response) {
-                    var obj = response;
-                    $.each(obj, function (index, element) {
-                        var html = ["<li>",
-                            "<div>",
-                            "<h2>",
-                            "<a href=\"/specificBlog?infoId="+element.articleInfoId+"\">",
-                            element.title,
-                            "</a>",
-                            "</h2>",
-                            "<h4 align='right'>",
-                            element.author,
-                            "</h4>",
-                            "<p>",
-                            element.description,
-                            "</p>",
-                            "</div>",
-                            "</li>",
-                            "<br>"].join('\n');
-                        $("#articleInfoDiv").append(html);
-                    })
-                },
-                error: function (response) {
-
-                }
-            });
-        })
-    </script>
+    <% String contextPath = request.getContextPath();%>
 
 </head>
 
@@ -93,8 +61,8 @@
     <div id='cssmenu' class="align-center">
         <ul>
             <li><a href='/'><span>Home</span></a></li>
-            <li class="active   "><a href='/blog'><span>Blog</span></a></li>
-            <li><a href='/writing'><span>Writing</span></a></li>
+            <li><a href='/blog'><span>Blog</span></a></li>
+            <li class="active"><a href='/writing'><span>Writing</span></a></li>
             <li class='last'><a href='/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
@@ -110,61 +78,24 @@
             <article class="post zerogrid">
                 <div class="row wrap-post"><!--Start Box-->
                     <div class="entry-header">
-                        <span class="time">June 8, 2016</span>
-                        <h2 class="entry-title"><a href="#">BLOG GALLERY</a></h2>
-                        <span class="cat-links"><a href="#">STUDY</a>, <a href="#">LIFESTYLE</a></span>
+                        <h2 class="entry-title"><a href="#">BLOG WRITING: SEIZE THE OPPORTUNITY</a></h2>
+                        <span class="cat-links"><a href="#">RECORDING</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
-                    <div class="post-thumbnail-wrap">
-                        <img src="<%=contextPath%>/images/1.jpg">
-                    </div>
-                    <div class="entry-content">
-                        <%--blog展示主页的简介--%>
-                        <div class="excerpt">
-                            <p>A man is not old as long as he is seeking something. A man is not old until regrets take
-                                the place of dreams.
-                            </p>
-                            <%--引用--%>
-                            <blockquote>
-                                <p>If you would go up high , then use your own legs ! Do not let yourselves carried
-                                    aloft;
-                                    do not seat yourselves on other people's backs and heads .(F.W .Nietzsche , German
-                                    Philosopher)
-                                </p>
-                            </blockquote>
+                    <form action = "/articleController/writing" method = "post">
+                        <input type="text" value="标题:" name="title" >
+                        <input type="text" value="作者:" name="author">
+                        <input type="text" value="简介:" name="description">
+                        <div class="entry-content">
+                            <div class="editormd" id="content-editor">
+                                <textarea class="editormd-markdown-textarea" name="content-editor-markdown-doc"></textarea>
+                                <textarea class="editormd-html-textarea" name="content"></textarea>
+                            </div>
                         </div>
-                        <%--正文--%>
-                        <div id="articleInfoDiv">
-
-                            <br><h1 id =''>最新文章</h1><br>
-
-
+                        <div><input type="submit" value="写好啦" align="right">
                         </div>
-                    </div>
+                    </form>
                 </div>
             </article>
-            <div class="zerogrid">
-                <div class="comments-are">
-                    <div id="comment">
-                        <h3>Leave a Reply</h3>
-                        <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post" action="">
-                            <label>
-                                <span>Comment:</span>
-                                <textarea name="message" id="message"></textarea>
-                            </label>
-                            <label>
-                                <span>Name:</span>
-                                <input type="text" name="name" id="name" required>
-                            </label>
-                            <label>
-                                <span>Email:</span>
-                                <input type="email" name="email" id="email" required>
-                            </label>
-                            <center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!--////////////////////////////////////Footer-->
@@ -230,6 +161,34 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(function() {
+            editormd("content-editor", { // 和上面的名字保持一致
+                width   : "100%",
+                height  : 750,
+                syncScrolling : "single",
+                path    : "/editormd/lib/",// 项目中lib的目录
+                saveHTMLToTextarea : true ,// 影响后端是否能取到文档中的值
+
+
+
+                /** upload picture file configuration **/
+                imageUpload : true, // 开启上传功能
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"], // 接收的格式
+                imageUploadURL : "/uploadController/picUpload"// 匹配到后端的请求地址，比如用Springmvc的controller接收
+                //editor.md期望得到一个json格式的上传后的返回值，格式是这样的：
+                /*{
+                    success : 0 | 1,           // 0 表示上传失败，1 表示上传成功
+                    message : "提示的信息，上传成功或上传失败及错误信息等。",
+                    url     : "图片地址"        // 上传成功时才返回
+                }*/
+
+
+            });
+        });
+    </script>
+
 </div>
 </body>
 </html>

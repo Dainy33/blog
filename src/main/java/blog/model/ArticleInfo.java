@@ -14,14 +14,16 @@ public class ArticleInfo implements Serializable {
     @Id
     @Column
     private String articleInfoId;
+    private String createDate;
 
     private String title;
-    private String type;
     private String author;
-    private String createDate;
+
+    @Column(columnDefinition="TEXT", nullable=true)
     private String description;
 
     //暂时不需要默认为null即可
+    private String type;
     private Boolean isDeleted;
     private Boolean isTop;
     private Boolean isOriginal;

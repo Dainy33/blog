@@ -110,3 +110,8 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 * 前台到Servlet中文乱码
 
 
+##version web1.1.1
+##description
+* comment 写和读大体完成
+* 读的布局需要修改
+* 上传图片未解决

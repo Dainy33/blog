@@ -21,7 +21,10 @@ public class ArticleComment implements Serializable {
     @Column(columnDefinition="TEXT", nullable=true)
     private String comment;
 
-    private Date createDate;
+    private String name;
+    private String email;
+
+    private String createDate;
 
 
     public ArticleComment() {
@@ -49,6 +52,22 @@ public class ArticleComment implements Serializable {
         this.articleInfoId = articleInfoId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getComment() {
         return comment;
     }
@@ -57,11 +76,11 @@ public class ArticleComment implements Serializable {
         this.comment = comment;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 }

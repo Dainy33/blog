@@ -1,3 +1,4 @@
+<%@ taglib prefix="标题" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -48,11 +49,10 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="/editormd/css/editormd.min.css"/>
-    <script src="/editormd/jquery.min.js"></script>
-    <script src="/editormd/editormd.min.js"></script>
-
     <% String contextPath = request.getContextPath();%>
+    <link rel="stylesheet" href="<%=contextPath%>/editormd/css/editormd.min.css"/>
+    <script src="<%=contextPath%>/editormd/jquery.min.js"></script>
+    <script src="/editormd/editormd.min.js"></script>
 
 </head>
 
@@ -82,31 +82,26 @@
                         <span class="cat-links"><a href="#">RECORDING</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <form action="/articleController/writing" method="post">
-<%--                        <table>
-                            <tr>
-                                <td>标题:</td>
-                                <td><input type="text" name="title"></td>
-                            </tr>
-                            <tr>
-                                <td>作者:</td>
-                                <td><input type="text" name="author"></td>
-                            </tr>
-                            <tr>
-                                <td>简介:</td>
-                                <td><input type="text" name="description"></td>
-                            </tr>
-                        </table>--%>
-                        <span>标题:</span><input type="text" name="title">
-                        <span>作者:</span><input type="text" name="author">
-                        <span>简介:</span><input type="text" name="description">
+
+                        <input type="text" name="title" value="标题:" required
+                               onfocus='if(this.value=="标题:"){this.value="";};'
+                               onblur='if(this.value==""){this.value="标题:";};'>
+                        <input type="text" name="author" value="作者:" required
+                               onfocus='if(this.value=="作者:"){this.value="";};'
+                               onblur='if(this.value==""){this.value="作者:";};'>
+                        <input type="text" name="description" value="简介:" required
+                               onfocus='if(this.value=="简介:"){this.value="";};'
+                               onblur='if(this.value==""){this.value="简介:";};'>
                         <div class="entry-content">
                             <div class="editormd" id="content-editor">
                                 <textarea class="editormd-markdown-textarea"
-                                          name="content-editor-markdown-doc"></textarea>
-                                <textarea class="editormd-html-textarea" name="content"></textarea>
+                                          name="content-editor-markdown-doc"
+                                          required></textarea>
+                                <textarea class="editormd-html-textarea" name="content"
+                                          required></textarea>
                             </div>
                         </div>
-                        <div><input type="submit" value="写好啦" align="right">
+                        <div><input class="sendButton" type="submit" name="Submit" value="Submit">
                         </div>
                     </form>
                 </div>
@@ -160,7 +155,7 @@
         </div>
     </footer>
     <!-- carousel -->
-    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="<%=contextPath%>/owl-carousel/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
             $("#owl-slide").owlCarousel({

@@ -73,7 +73,7 @@
             });
 
             articleContent();
-
+            articleComment()
         }
 
         function articleContent() {
@@ -86,7 +86,40 @@
                 success: function (response) {
                     var obj = response;
                     $.each(obj, function (index, element) {
-                        $(".entry-content").html(element.content);
+                        $("#Acontent").html(element.content);
+                    })
+                },
+                error: function (response) {
+                }
+            });
+        }
+
+        function articleComment() {
+            var infoId = "<%= Id%>";
+            $.ajax({
+                url: "/articleController/getArticleCommentByInfoId?infoId=" + infoId.toString(),
+                type: 'GET',
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    var obj = response;
+                    $.each(obj, function (index, element) {
+                        var html = ["<li>",
+                            "<div class='divcss5'>",
+                            "<h2>",
+                            element.name,
+                            "</a>",
+                            "</h2>",
+                            "<h4 align='right'>",
+                            element.email,
+                            "</h4>",
+                            "<p>",
+                            element.comment,
+                            "</p>",
+                            "</div>",
+                            "</li>",
+                            "<br>"].join('\n');
+                        $("#Acomment").append(html);
                     })
                 },
                 error: function (response) {
@@ -126,19 +159,26 @@
                         <span class="time">CREATEDATE</span>
                         <h2 class="entry-title">BLOG TITLE</h2>
                     </div>
-                    <div class="entry-content">
-
+                    <div class="entry-content" id="Acontent">
                         <%--ArticleContent--%>
-
                     </div>
                 </div>
             </article>
+
+            <article class="post zerogrid">
+                <div class="row wrap-post"><!--Start Box-->
+                    <div class="entry-content" id="Acomment">
+                        <%--ArticleComment--%>
+                    </div>
+                </div>
+            </article>
+
             <div class="zerogrid">
                 <div class="comments-are">
                     <div id="comment">
                         <h3>Leave a Reply</h3>
                         <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post" action="">
+                        <form name="form1" id="comment_form" method="post" action="/articleController/createArticleComment">
                             <label>
                                 <span>Comment:</span>
                                 <textarea name="message" id="message"></textarea>
@@ -150,6 +190,9 @@
                             <label>
                                 <span>Email:</span>
                                 <input type="email" name="email" id="email" required>
+                            </label>
+                            <label>
+                                <input type="hidden" name="infoId" value="<%=Id%>" >
                             </label>
                             <center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
                         </form>
@@ -205,7 +248,7 @@
         </div>
     </footer>
     <!-- carousel -->
-    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="<%=contextPath%>/owl-carousel/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
             $("#owl-slide").owlCarousel({

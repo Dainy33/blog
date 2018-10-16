@@ -42,7 +42,7 @@ public class TestController {
     @ResponseBody
     public String createCommentTest(){
         ArticleComment articleComment = new ArticleComment(UUID.randomUUID().toString(),UUID.randomUUID().toString(),"月落乌啼霜满天!");
-        iArticleService.createArticleComment(articleComment,"011");
+        iArticleService.createArticleComment(articleComment);
         return "Banana!";
     }
 

@@ -43,9 +43,9 @@ public class ArticleServiceImpl implements IArticleService {
         return true;
     }
 
-    public boolean createArticleComment(ArticleComment articleComment,String infoId) {
+    public boolean createArticleComment(ArticleComment articleComment) {
         articleComment.setCommentId(UUID.randomUUID().toString());
-        articleComment.setArticleInfoId(infoId);
+        articleComment.setCreateDate(new Date().toString());
         articleCommentDao.save(articleComment);
         return true;
     }

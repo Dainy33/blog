@@ -259,7 +259,7 @@
         </div>
     </footer>
     <!-- carousel -->
-    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="<%=contextPath%>/owl-carousel/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
             $("#owl-slide").owlCarousel({

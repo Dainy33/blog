@@ -223,8 +223,8 @@
                     <div class="wrap-col">
                         <h3>About</h3>
                         <a href="index.jsp"><img src="<%=contextPath%>/images/avatar.jpg"/></a>
-                        <p>Ut volutpat consectetur aliquam. Curabitur auctor in nis ulum ornare. Sed consequat, augue
-                            condimentum fermentum gravida, metus elit vehicula dui.</p>
+                        <p>To see a world in a grain of sand. And a heaven in a wild flower
+                            Hold infinity in the palm of your hand. And eternity in an hour.</p>
                     </div>
                 </div>
                 <div class="col-1-3 col-footer-2">
@@ -249,8 +249,8 @@
         </div>
         <div class="zerogrid copyright">
             <div class="wrapper">
-                Copyright @ - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> -
-                Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                Copyright @ - More Information <a href="#" target="_blank" title="Dainy">Dainy</a> -
+                Collect from <a href="#" title="Dainy" target="_blank">Dainy</a>
                 <ul class="quick-link f-right">
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Use</a></li>

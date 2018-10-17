@@ -43,7 +43,11 @@ public class ArticleController {
 
         iArticleService.createArticleContent(articleContent);
 
+        return "redirect:/blog";
+
+/*
         return "blog";
+*/
     }
 
     @RequestMapping(value = "createArticleComment", method = RequestMethod.POST)
@@ -59,9 +63,6 @@ public class ArticleController {
         iArticleService.createArticleComment(articleComment);
 
         return "redirect:/specificBlog?infoId="+request.getParameter("infoId");
-        /*
-        ModelAndView mav = new ModelAndView();
-        return mav;*/
     }
 
     @RequestMapping(value = "createBlogComment", method = RequestMethod.POST)

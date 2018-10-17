@@ -57,10 +57,10 @@
 <div class="wrap-body">
     <div id='cssmenu' class="align-center">
         <ul>
-            <li class="active"><a href='/'><span>Home</span></a></li>
-                <li><a href='/blog'><span>Blog</span></a></li>
-            <li><a href='/writing'><span>Writing</span></a></li>
-            <li class='last'><a href='/contact'><span>Contacts</span></a></li>
+            <li class="active"><a href='<%=contextPath%>/'><span>Home</span></a></li>
+                <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
+            <li><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li class='last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">

@@ -79,7 +79,7 @@
         function articleContent() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/article/getArticleContentByInfoId?infoId=" + infoId.toString(),
+                url: "<%=contextPath%>/article/getArticleContentByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -97,7 +97,7 @@
         function articleComment() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/article/getArticleCommentByInfoId?infoId=" + infoId.toString(),
+                url: "<%=contextPath%>/article/getArticleCommentByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -137,11 +137,11 @@
 <div class="wrap-body">
     <div id='cssmenu' class="align-center">
         <ul>
-            <li><a href='/'><span>Home</span></a></li>
-            <li class="active   "><a href='/blog'><span>Blog</span></a></li>
+            <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
+            <li class="active   "><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
 
-            <li><a href='/writing'><span>Writing</span></a></li>
-            <li class='last'><a href='/contact'><span>Contacts</span></a></li>
+            <li><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li class='last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">
@@ -178,7 +178,7 @@
                     <div id="comment">
                         <h3>Leave a Reply</h3>
                         <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post" action="/article/createArticleComment">
+                        <form name="form1" id="comment_form" method="post" action="<%=contextPath%>/article/createArticleComment">
                             <label>
                                 <span>Comment:</span>
                                 <textarea name="message" id="message"></textarea>

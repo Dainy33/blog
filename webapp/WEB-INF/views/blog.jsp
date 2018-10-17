@@ -48,12 +48,12 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <% String contextPath =request.getContextPath();%>
+    <% String contextPath = request.getContextPath();%>
 
     <script>
         function getLatestTenArticleInfo() {
             $.ajax({
-                url: "<%=request.getContextPath()%>" + "/article/getLatestTenArticleInfo",
+                url: "<%=request.getContextPath()%>" + "<%=contextPath%>/article/getLatestTenArticleInfo",
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -88,7 +88,7 @@
 
         function getBlogComment() {
             $.ajax({
-                url: "/article/getBlogComment",
+                url: "<%=contextPath%>/article/getBlogComment",
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -128,10 +128,10 @@
 <div class="wrap-body">
     <div id='cssmenu' class="align-center">
         <ul>
-            <li><a href='/'><span>Home</span></a></li>
-            <li class="active   "><a href='/blog'><span>Blog</span></a></li>
-            <li><a href='/writing'><span>Writing</span></a></li>
-            <li class='last'><a href='/contact'><span>Contacts</span></a></li>
+            <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
+            <li class="active   "><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
+            <li><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li class='last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">
@@ -171,7 +171,7 @@
                         <%--正文--%>
                         <div id="articleInfoDiv">
 
-                            <br><h1 id =''>最新文章</h1><br>
+                            <br><h1 align="center" style="font-family: 'Cabin', Helvetica, sans-serif;font-size: 24px;line-height: 30px;color: #575756 ;letter-spacing: 2px;font-weight: 600;margin: 0 ">最新文章</h1><br>
 
 
                         </div>
@@ -192,7 +192,8 @@
                     <div id="comment">
                         <h3>Leave a Reply</h3>
                         <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post" action="/article/createBlogComment">
+                        <form name="form1" id="comment_form" method="post"
+                              action="<%=contextPath%>/article/createBlogComment">
                             <label>
                                 <span>Comment:</span>
                                 <textarea name="message" id="message"></textarea>
@@ -259,7 +260,7 @@
         </div>
     </footer>
     <!-- carousel -->
-    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="<%=contextPath%>/owl-carousel/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
             $("#owl-slide").owlCarousel({

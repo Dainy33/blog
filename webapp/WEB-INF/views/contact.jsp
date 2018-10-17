@@ -56,11 +56,11 @@
 <div class="wrap-body">
     <div id='cssmenu' class="align-center">
         <ul>
-            <li><a href='/'><span>Home</span></a></li>
-            <li><a href='/blog'><span>Blog</span></a></li>
+            <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
+            <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
 
-            <li><a href='/writing'><span>Writing</span></a></li>
-            <li class='active last'><a href='/contact'><span>Contacts</span></a></li>
+            <li><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li class='active last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">
@@ -159,7 +159,7 @@
         </div>
     </footer>
     <!-- carousel -->
-    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="<%=contextPath%>/owl-carousel/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
             $("#owl-slide").owlCarousel({

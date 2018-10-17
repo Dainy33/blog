@@ -1,6 +1,5 @@
 package blog.dao;
 
-import blog.model.ArticleComment;
 import blog.model.BlogComment;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;

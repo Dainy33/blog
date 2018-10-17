@@ -52,7 +52,7 @@
     <% String contextPath = request.getContextPath();%>
     <link rel="stylesheet" href="<%=contextPath%>/editormd/css/editormd.min.css"/>
     <script src="<%=contextPath%>/editormd/jquery.min.js"></script>
-    <script src="/editormd/editormd.min.js"></script>
+    <script src="<%=contextPath%>/editormd/editormd.min.js"></script>
 
 </head>
 
@@ -60,10 +60,10 @@
 <div class="wrap-body">
     <div id='cssmenu' class="align-center">
         <ul>
-            <li><a href='/'><span>Home</span></a></li>
-            <li><a href='/blog'><span>Blog</span></a></li>
-            <li class="active"><a href='/writing'><span>Writing</span></a></li>
-            <li class='last'><a href='/contact'><span>Contacts</span></a></li>
+            <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
+            <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
+            <li class="active"><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li class='last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
     <header class="">
@@ -81,7 +81,7 @@
                         <h2 class="entry-title"><a href="#">BLOG WRITING: SEIZE THE OPPORTUNITY</a></h2>
                         <span class="cat-links"><a href="#">RECORDING</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
-                    <form action="/article/writing" method="post">
+                    <form action="<%=contextPath%>/article/writing" method="post">
 
                         <input type="text" name="title" value="标题:" required
                                onfocus='if(this.value=="标题:"){this.value="";};'

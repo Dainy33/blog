@@ -3,6 +3,7 @@ package blog.service;
 import blog.model.ArticleComment;
 import blog.model.ArticleContent;
 import blog.model.ArticleInfo;
+import blog.model.BlogComment;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ public interface IArticleService {
     public boolean createArticleContent(ArticleContent articleContent);
 
     public boolean createArticleComment(ArticleComment articleComment);
+
+    public boolean createBlogComment(BlogComment blogComment);
 
     public boolean deleteArticleInfoByInfoId(String infoId);
 
@@ -41,6 +44,8 @@ public interface IArticleService {
     public ArticleContent getArticleContentByInfoId(String infoId);
 
     public List<ArticleInfo>  getLatestTenArticleInfo();
+
+    public List<BlogComment> getBlogComment();
 
 
 }

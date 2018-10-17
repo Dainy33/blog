@@ -3,9 +3,11 @@ package blog.service.implement;
 import blog.dao.ArticleCommentDao;
 import blog.dao.ArticleContentDao;
 import blog.dao.ArticleInfoDao;
+import blog.dao.BlogCommentDao;
 import blog.model.ArticleComment;
 import blog.model.ArticleContent;
 import blog.model.ArticleInfo;
+import blog.model.BlogComment;
 import blog.service.IArticleService;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,9 @@ public class ArticleServiceImpl implements IArticleService {
     @Resource
     ArticleCommentDao articleCommentDao;
 
+    @Resource
+    BlogCommentDao blogCommentDao;
+
     public String createArticleInfo(ArticleInfo articleInfo) {
         String articleInfoId = UUID.randomUUID().toString();
         articleInfo.setArticleInfoId(articleInfoId);
@@ -47,6 +52,13 @@ public class ArticleServiceImpl implements IArticleService {
         articleComment.setCommentId(UUID.randomUUID().toString());
         articleComment.setCreateDate(new Date().toString());
         articleCommentDao.save(articleComment);
+        return true;
+    }
+
+    public boolean createBlogComment(BlogComment blogComment) {
+        blogComment.setCommentId(UUID.randomUUID().toString());
+        blogComment.setCreateDate(new Date().toString());
+        blogCommentDao.save(blogComment);
         return true;
     }
 
@@ -95,7 +107,7 @@ public class ArticleServiceImpl implements IArticleService {
     }
 
     public ArticleContent getArticleContentByInfoId(String infoId) {
-        ArticleContent articleContent =articleContentDao.getArticleContentByInfoId(infoId);
+        ArticleContent articleContent = articleContentDao.getArticleContentByInfoId(infoId);
         return articleContent;
     }
 
@@ -107,6 +119,11 @@ public class ArticleServiceImpl implements IArticleService {
     public List<ArticleInfo> getLatestTenArticleInfo() {
         List<ArticleInfo> articleInfoList = articleInfoDao.getLatestTenArticleInfo();
         return articleInfoList;
+    }
+
+    public List<BlogComment> getBlogComment() {
+        List<BlogComment> blogCommentList = blogCommentDao.getBlogComment();
+        return blogCommentList;
     }
 }
 /**

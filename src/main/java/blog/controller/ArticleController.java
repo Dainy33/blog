@@ -3,6 +3,7 @@ package blog.controller;
 import blog.model.ArticleComment;
 import blog.model.ArticleContent;
 import blog.model.ArticleInfo;
+import blog.model.BlogComment;
 import blog.service.IArticleService;
 import blog.utils.JsonUtil;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,17 +19,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/articleController")
+@RequestMapping(value = "/article")
 public class ArticleController {
 
     @Resource
     IArticleService iArticleService;
 
 
-    @RequestMapping(value = "/writing",method = RequestMethod.POST)
-    public String write(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value = "/writing", method = RequestMethod.POST)
+    public String write(HttpServletRequest request, HttpServletResponse response) {
 
-        ArticleInfo articleInfo =new ArticleInfo();
+        ArticleInfo articleInfo = new ArticleInfo();
         ArticleContent articleContent = new ArticleContent();
 
         articleInfo.setTitle(request.getParameter("title"));
@@ -44,8 +46,8 @@ public class ArticleController {
         return "blog";
     }
 
-    @RequestMapping(value = "createArticleComment",method = RequestMethod.POST)
-    public String createArticleComment(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value = "createArticleComment", method = RequestMethod.POST)
+    public String  createArticleComment(HttpServletRequest request, HttpServletResponse response) {
 
         ArticleComment articleComment = new ArticleComment();
 
@@ -55,11 +57,28 @@ public class ArticleController {
         articleComment.setComment(request.getParameter("message"));
 
         iArticleService.createArticleComment(articleComment);
-        return "index";
+
+        return "redirect:/specificBlog?infoId="+request.getParameter("infoId");
+        /*
+        ModelAndView mav = new ModelAndView();
+        return mav;*/
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
-    public String delete(HttpServletRequest request, HttpServletResponse response,ArticleInfo articleInfo){
+    @RequestMapping(value = "createBlogComment", method = RequestMethod.POST)
+    public String createBlogComment(HttpServletRequest request, HttpServletResponse response) {
+
+        BlogComment blogComment = new BlogComment();
+
+        blogComment.setName(request.getParameter("name"));
+        blogComment.setEmail(request.getParameter("email"));
+        blogComment.setComment(request.getParameter("message"));
+
+        iArticleService.createBlogComment(blogComment);
+        return "blog";
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(HttpServletRequest request, HttpServletResponse response, ArticleInfo articleInfo) {
 
         String infoId = articleInfo.getArticleInfoId();
         iArticleService.deleteArticleInfoByInfoId(infoId);
@@ -70,37 +89,46 @@ public class ArticleController {
     }
 
     //返回最新的N篇文章 N=10
-    @RequestMapping(value = "/getLatestTenArticleInfo",method = RequestMethod.GET)
+    @RequestMapping(value = "/getLatestTenArticleInfo", method = RequestMethod.GET)
     @ResponseBody
-    public String getLatestTenArticleInfo(HttpServletRequest request, HttpServletResponse response){
+    public String getLatestTenArticleInfo(HttpServletRequest request, HttpServletResponse response) {
         List<ArticleInfo> latestTenArticleInfo = iArticleService.getLatestTenArticleInfo();
         String responseInfo = JsonUtil.beanToJson(latestTenArticleInfo);
         return responseInfo;
     }
 
-    @RequestMapping(value = "/getArticleInfoByInfoId",method = RequestMethod.GET)
+    //返回Blog页面的评论 N max =10
+    @RequestMapping(value = "/getBlogComment", method = RequestMethod.GET)
     @ResponseBody
-    public String getArticleInfoByInfoId(HttpServletRequest request, HttpServletResponse response,@RequestParam String infoId){
+    public String getBlogComment(HttpServletRequest request, HttpServletResponse response) {
+        List<BlogComment> blogCommentList = iArticleService.getBlogComment();
+        String responseInfo = JsonUtil.beanToJson(blogCommentList);
+        return responseInfo;
+    }
+
+    @RequestMapping(value = "/getArticleInfoByInfoId", method = RequestMethod.GET)
+    @ResponseBody
+    public String getArticleInfoByInfoId(HttpServletRequest request, HttpServletResponse response, @RequestParam String infoId) {
 
         ArticleInfo articleInfo = iArticleService.getArticleInfoByInfoId(infoId);
         String responseInfo = JsonUtil.beanToJson(articleInfo);
-        responseInfo = "["+responseInfo+"]";
+        responseInfo = "[" + responseInfo + "]";
         return responseInfo;
     }
 
-    @RequestMapping(value = "/getArticleContentByInfoId",method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticleContentByInfoId", method = RequestMethod.GET)
     @ResponseBody
-    public String getArticleContentByInfoId(HttpServletRequest request, HttpServletResponse response,@RequestParam String infoId){
+    public String getArticleContentByInfoId(HttpServletRequest request, HttpServletResponse response, @RequestParam String infoId) {
 
         ArticleContent articleContent = iArticleService.getArticleContentByInfoId(infoId);
         String responseInfo = JsonUtil.beanToJson(articleContent);
-        responseInfo = "["+responseInfo+"]";
+        responseInfo = "[" + responseInfo + "]";
         return responseInfo;
     }
 
-    @RequestMapping(value = "/getArticleCommentByInfoId",method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticleCommentByInfoId", method = RequestMethod.GET)
     @ResponseBody
-    public String getArticleCommentByInfoId(HttpServletRequest request, HttpServletResponse response,@RequestParam String infoId){
+    public String getArticleCommentByInfoId(HttpServletRequest request, HttpServletResponse response, @RequestParam String infoId) {
 
         List<ArticleComment> commentList = iArticleService.getArticleCommentByInfoId(infoId);
         String responseInfo = JsonUtil.beanToJson(commentList);

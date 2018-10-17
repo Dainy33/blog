@@ -81,7 +81,7 @@
                         <h2 class="entry-title"><a href="#">BLOG WRITING: SEIZE THE OPPORTUNITY</a></h2>
                         <span class="cat-links"><a href="#">RECORDING</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
-                    <form action="/articleController/writing" method="post">
+                    <form action="/article/writing" method="post">
 
                         <input type="text" name="title" value="标题:" required
                                onfocus='if(this.value=="标题:"){this.value="";};'

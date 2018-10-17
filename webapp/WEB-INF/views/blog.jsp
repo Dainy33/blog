@@ -51,9 +51,9 @@
     <% String contextPath =request.getContextPath();%>
 
     <script>
-        $(document).ready(function () {
+        function getLatestTenArticleInfo() {
             $.ajax({
-                url: "<%=request.getContextPath()%>" + "/articleController/getLatestTenArticleInfo",
+                url: "<%=request.getContextPath()%>" + "/article/getLatestTenArticleInfo",
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -63,7 +63,7 @@
                         var html = ["<li>",
                             "<div>",
                             "<h2>",
-                            "<a href=\"/specificBlog?infoId="+element.articleInfoId+"\">",
+                            "<a href=\"/specificBlog?infoId=" + element.articleInfoId + "\">",
                             element.title,
                             "</a>",
                             "</h2>",
@@ -83,7 +83,43 @@
 
                 }
             });
-        })
+            getBlogComment();
+        }
+
+        function getBlogComment() {
+            $.ajax({
+                url: "/article/getBlogComment",
+                type: 'GET',
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    var obj = response;
+                    $.each(obj, function (index, element) {
+                        var html = ["<li>",
+                            "<div class='divcss5'>",
+                            "<h2>",
+                            element.name,
+                            "</a>",
+                            "</h2>",
+                            "<h4 align='right'>",
+                            element.email,
+                            "</h4>",
+                            "<p>",
+                            element.comment,
+                            "</p>",
+                            "</div>",
+                            "</li>",
+                            "<br>"].join('\n');
+                        $("#Bcomment").append(html);
+                    })
+                },
+                error: function (response) {
+                }
+            });
+        }
+
+        $(document).ready(getLatestTenArticleInfo());
+
     </script>
 
 </head>
@@ -142,12 +178,21 @@
                     </div>
                 </div>
             </article>
+
+            <article class="post zerogrid">
+                <div class="row wrap-post"><!--Start Box-->
+                    <div class="entry-content" id="Bcomment">
+                        <%--BlogComment--%>
+                    </div>
+                </div>
+            </article>
+
             <div class="zerogrid">
                 <div class="comments-are">
                     <div id="comment">
                         <h3>Leave a Reply</h3>
                         <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post" action="">
+                        <form name="form1" id="comment_form" method="post" action="/article/createBlogComment">
                             <label>
                                 <span>Comment:</span>
                                 <textarea name="message" id="message"></textarea>

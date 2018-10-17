@@ -115,3 +115,17 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 * comment 写和读大体完成
 * 读的布局需要修改
 * 上传图片未解决
+
+
+##version web1.1.2
+##description
+* comment 增加BlogComment
+* Blog/ArticleComment按时间降序返回
+* 页面跳转 写完调到blog 写完articleComment调到当前Article 写完BlogComment调到blog
+
+##version web1.1.3
+##description
+* 将getLatestTenArticle 移到 index (数量10需调整 3个?)
+* 在blog页获取全部文章并加入分页
+* comment分页
+

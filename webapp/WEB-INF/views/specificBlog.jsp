@@ -57,7 +57,7 @@
         function articleInfo() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/articleController/getArticleInfoByInfoId?infoId=" + infoId.toString(),
+                url: "/article/getArticleInfoByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -79,7 +79,7 @@
         function articleContent() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/articleController/getArticleContentByInfoId?infoId=" + infoId.toString(),
+                url: "/article/getArticleContentByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -97,7 +97,7 @@
         function articleComment() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/articleController/getArticleCommentByInfoId?infoId=" + infoId.toString(),
+                url: "/article/getArticleCommentByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -178,7 +178,7 @@
                     <div id="comment">
                         <h3>Leave a Reply</h3>
                         <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post" action="/articleController/createArticleComment">
+                        <form name="form1" id="comment_form" method="post" action="/article/createArticleComment">
                             <label>
                                 <span>Comment:</span>
                                 <textarea name="message" id="message"></textarea>

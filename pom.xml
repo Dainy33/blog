@@ -7,7 +7,7 @@
     <groupId>com.dainy.naughty</groupId>
     <artifactId>blog</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>war</packaging>
 
     <properties>
         <springVersion>4.3.1.RELEASE</springVersion>
@@ -30,6 +30,22 @@
                 <directory>${project.basedir}/src/main/resources</directory>
             </testResource>
         </testResources>
+
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>webapp</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
 
     </build>
 
@@ -220,8 +236,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
-
-
 
 
         <dependency>

@@ -7,6 +7,8 @@
 <html lang="en"> <!--<![endif]-->
 <head>
 
+    <% String contextPath = request.getContextPath();%>
+
     <!-- Basic Page Needs
   ================================================== -->
     <meta charset="utf-8">
@@ -20,19 +22,19 @@
 
     <!-- CSS
 	================================================== -->
-    <link rel="stylesheet" href="../../css/zerogrid.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="<%=contextPath%>/css/zerogrid.css">
+    <link rel="stylesheet" href="<%=contextPath%>/css/style.css">
 
     <!-- Custom Fonts -->
-    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<%=contextPath%>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-    <link rel="stylesheet" href="../../css/menu.css">
-    <script src="../../js/jquery1111.min.js" type="text/javascript"></script>
-    <script src="../../js/script.js"></script>
+    <link rel="stylesheet" href="<%=contextPath%>/css/menu.css">
+    <script src="<%=contextPath%>/js/jquery1111.min.js" type="text/javascript"></script>
+    <script src="<%=contextPath%>/js/script.js"></script>
 
     <!-- Owl Carousel Assets -->
-    <link href="../../owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="<%=contextPath%>/owl-carousel/owl.carousel.css" rel="stylesheet">
     <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
 
     <!--[if lt IE 8]>
@@ -49,7 +51,6 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <% String contextPath = request.getContextPath();%>
 
 </head>
 

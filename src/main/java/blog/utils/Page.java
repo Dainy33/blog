@@ -134,7 +134,7 @@ public class Page implements Serializable {
     public void setHasLast(boolean hasLast) {
         this.hasLast = hasLast;
     }
-    
+
 }
 /**
  * @program: blog

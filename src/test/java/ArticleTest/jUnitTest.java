@@ -40,6 +40,7 @@ public class jUnitTest {
         person example = new person();
         example.setLeftEyeSight("5.0");
         example.setRightEyeSight("4.5");
+        String str="<a href=\"<%=contextPath%>/specificBlog?infoId=\" + element.articleInfoId>";
     }
 
 

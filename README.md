@@ -152,3 +152,11 @@ character-set-server=utf8
 default-character-set=utf8
 
 
+##version web1.1.5
+* 项目结构重构webapp 迁移到/src/main/
+* 在spring-mvc中加入上传用的bean
+* pom加了两个支持上传的依赖
+* 图片上传仍未解决
+
+
+

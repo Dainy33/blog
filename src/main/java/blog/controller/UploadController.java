@@ -14,13 +14,14 @@ import java.io.File;
 import java.util.UUID;
 
 @Controller
-@RequestMapping(value = "uploadController")
+@RequestMapping(value = "upload")
 public class UploadController {
 
     @RequestMapping(value = "/picUpload", method = RequestMethod.POST)
     @ResponseBody
     public String picUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "editormd-image-file", required = false) MultipartFile picFile) {
         try{
+            System.out.println("Check in");
             request.setCharacterEncoding("UTF-8");
             response.setHeader("Content-Type", "text/html");
             String rootPath = request.getSession().getServletContext().getRealPath("");

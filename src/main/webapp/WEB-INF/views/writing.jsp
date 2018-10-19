@@ -1,3 +1,4 @@
+<%@ taglib prefix="标题" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -50,78 +51,9 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-
-    <script>
-        function getLatestTenArticleInfo() {
-            $.ajax({
-                url:  "<%=contextPath%>/article/getLatestTenArticleInfo",
-                type: 'GET',
-                data: {},
-                dataType: "json",
-                success: function (response) {
-                    var obj = response;
-                    $.each(obj, function (index, element) {
-                        var html = ["<li>",
-                            "<div>",
-                            "<h2>",
-                            "<a href='<%=contextPath%>/specificBlog?infoId="+element.articleInfoId+"'>",
-                            element.title,
-                            "</a>",
-                            "</h2>",
-                            "<h4 align='right'>",
-                            element.author,
-                            "</h4>",
-                            "<p>",
-                            element.description,
-                            "</p>",
-                            "</div>",
-                            "</li>",
-                            "<br>"].join('\n');
-                        $("#articleInfoDiv").append(html);
-                    })
-                },
-                error: function (response) {
-
-                }
-            });
-            getBlogComment();
-        }
-
-        function getBlogComment() {
-            $.ajax({
-                url: "<%=contextPath%>/article/getBlogComment",
-                type: 'GET',
-                data: {},
-                dataType: "json",
-                success: function (response) {
-                    var obj = response;
-                    $.each(obj, function (index, element) {
-                        var html = ["<li>",
-                            "<div class='divcss5'>",
-                            "<h2>",
-                            element.name,
-                            "</a>",
-                            "</h2>",
-                            "<h4 align='right'>",
-                            element.email,
-                            "</h4>",
-                            "<p>",
-                            element.comment,
-                            "</p>",
-                            "</div>",
-                            "</li>",
-                            "<br>"].join('\n');
-                        $("#Bcomment").append(html);
-                    })
-                },
-                error: function (response) {
-                }
-            });
-        }
-
-        $(document).ready(getLatestTenArticleInfo());
-
-    </script>
+    <link rel="stylesheet" href="<%=contextPath%>/editormd/css/editormd.min.css"/>
+    <script src="<%=contextPath%>/editormd/jquery.min.js"></script>
+    <script src="<%=contextPath%>/editormd/editormd.min.js"></script>
 
 </head>
 
@@ -130,8 +62,8 @@
     <div id='cssmenu' class="align-center">
         <ul>
             <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
-            <li class="active   "><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
-            <li><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
+            <li class="active"><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
             <li class='last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
@@ -147,74 +79,34 @@
             <article class="post zerogrid">
                 <div class="row wrap-post"><!--Start Box-->
                     <div class="entry-header">
-                        <span class="time">June 8, 2016</span>
-                        <h2 class="entry-title"><a href="#">BLOG GALLERY</a></h2>
-                        <span class="cat-links"><a href="#">STUDY</a>, <a href="#">LIFESTYLE</a></span>
+                        <h2 class="entry-title"><a href="#">BLOG WRITING: SEIZE THE OPPORTUNITY</a></h2>
+                        <span class="cat-links"><a href="#">RECORDING</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
-                    <div class="post-thumbnail-wrap">
-                        <img src="<%=contextPath%>/images/1.jpg">
-                    </div>
-                    <div class="entry-content">
-                        <%--blog展示主页的简介--%>
-                        <div class="excerpt">
-                            <p>A man is not old as long as he is seeking something. A man is not old until regrets take
-                                the place of dreams.
-                            </p>
-                            <%--引用--%>
-                            <blockquote>
-                                <p>If you would go up high , then use your own legs ! Do not let yourselves carried
-                                    aloft;
-                                    do not seat yourselves on other people's backs and heads .(F.W .Nietzsche , German
-                                    Philosopher)
-                                </p>
-                            </blockquote>
+                    <form action="<%=contextPath%>/article/writing" method="post">
+
+                        <input type="text" name="title" value="标题:" required
+                               onfocus='if(this.value=="标题:"){this.value="";};'
+                               onblur='if(this.value==""){this.value="标题:";};'>
+                        <input type="text" name="author" value="作者:" required
+                               onfocus='if(this.value=="作者:"){this.value="";};'
+                               onblur='if(this.value==""){this.value="作者:";};'>
+                        <input type="text" name="description" value="简介:" required
+                               onfocus='if(this.value=="简介:"){this.value="";};'
+                               onblur='if(this.value==""){this.value="简介:";};'>
+                        <div class="entry-content">
+                            <div class="editormd" id="content-editor">
+                                <textarea class="editormd-markdown-textarea"
+                                          name="content-editor-markdown-doc"
+                                          required></textarea>
+                                <textarea class="editormd-html-textarea" name="content"
+                                          required></textarea>
+                            </div>
                         </div>
-                        <%--正文--%>
-                        <div id="articleInfoDiv">
-
-                            <br><h1 align="center" style="font-family: 'Cabin', Helvetica, sans-serif;font-size: 24px;line-height: 30px;color: #575756 ;letter-spacing: 2px;font-weight: 600;margin: 0 ">最新文章</h1><br>
-
-
+                        <div><input class="sendButton" type="submit" name="Submit" value="Submit">
                         </div>
-                    </div>
+                    </form>
                 </div>
             </article>
-
-            <article class="post zerogrid">
-                <div class="row wrap-post"><!--Start Box-->
-                    <div class="entry-content" id="Bcomment">
-                        <div>
-                            <br><h1 align="center" style="font-family: 'Cabin', Helvetica, sans-serif;font-size: 24px;line-height: 30px;color: #575756 ;letter-spacing: 2px;font-weight: 600;margin: 0 ">留言</h1><br>
-                        </div>
-                        <%--BlogComment--%>
-                    </div>
-                </div>
-            </article>
-
-            <div class="zerogrid">
-                <div class="comments-are">
-                    <div id="comment">
-                        <h3>Leave a Reply</h3>
-                        <span>Your email address will not be published. Required fields are marked </span>
-                        <form name="form1" id="comment_form" method="post"
-                              action="<%=contextPath%>/article/createBlogComment">
-                            <label>
-                                <span>Comment:</span>
-                                <textarea name="message" id="message"></textarea>
-                            </label>
-                            <label>
-                                <span>Name:</span>
-                                <input type="text" name="name" id="name" required>
-                            </label>
-                            <label>
-                                <span>Email:</span>
-                                <input type="email" name="email" id="email" required>
-                            </label>
-                            <center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!--////////////////////////////////////Footer-->
@@ -280,6 +172,34 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(function () {
+            editormd("content-editor", { // 和上面的名字保持一致
+                width: "100%",
+                height: 750,
+                syncScrolling: "single",
+                path: "<%=contextPath%>/editormd/lib/",// 项目中lib的目录
+                saveHTMLToTextarea: true,// 影响后端是否能取到文档中的值
+
+
+                /** upload picture file configuration **/
+                imageUpload: true, // 开启上传功能
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"], // 接收的格式
+                imageUploadURL: "<%=contextPath%>/upload/picUpload"
+                // 匹配到后端的请求地址，比如用Springmvc的controller接收
+                //editor.md期望得到一个json格式的上传后的返回值，格式是这样的：
+                /*{
+                    success : 0 | 1,           // 0 表示上传失败，1 表示上传成功
+                    message : "提示的信息，上传成功或上传失败及错误信息等。",
+                    url     : "图片地址"        // 上传成功时才返回
+                }*/
+
+
+            });
+        });
+    </script>
+
 </div>
 </body>
 </html>

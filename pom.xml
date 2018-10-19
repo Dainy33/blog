@@ -42,7 +42,7 @@
                 <configuration>
                     <webResources>
                         <resource>
-                            <directory>webapp</directory>
+                            <directory>src/main/webapp</directory>
                         </resource>
                     </webResources>
                 </configuration>
@@ -199,8 +199,8 @@
         </dependency>
 
         <!--
-                java.lang.IllegalArgumentException: No converter found for return value of type: class com.dainy.naughty.utils.SuccessResponseInfo
-                springmvc默认是没有对象转换成json的转换器的，需要手动添加jackson依赖
+        java.lang.IllegalArgumentException: No converter found for return value of type: class com.dainy.naughty.utils.SuccessResponseInfo
+        springmvc默认是没有对象转换成json的转换器的，需要手动添加jackson依赖
         -->
         <!--jackson-->
         <dependency>
@@ -248,10 +248,26 @@
             <version>3.4</version>
         </dependency>
 
+        <!--editorMd在线编辑器-->
         <dependency>
             <groupId>org.tautua.markdownpapers</groupId>
             <artifactId>markdownpapers-core</artifactId>
             <version>1.4.1</version>
+        </dependency>
+
+
+        <!--Apache Commons Upload-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <!--Apache Commons Upload-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
         </dependency>
 
     </dependencies>

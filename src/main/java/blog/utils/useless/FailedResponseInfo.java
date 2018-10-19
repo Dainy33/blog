@@ -1,4 +1,4 @@
-package blog.utils;
+package blog.utils.useless;
 
 public class FailedResponseInfo extends ResponseInfo {
     private String errorMsg;

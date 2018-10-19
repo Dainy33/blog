@@ -21,16 +21,16 @@ public class UploadController {
     @ResponseBody
     public String picUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "editormd-image-file", required = false) MultipartFile picFile) {
         try{
-            System.out.println("Check in");
             request.setCharacterEncoding("UTF-8");
             response.setHeader("Content-Type", "text/html");
             String rootPath = request.getSession().getServletContext().getRealPath("");
             String URIpath = "";
+            String contextPath = request.getContextPath();
             if(!picFile.isEmpty()){
                 String uuid = UUID.randomUUID().toString().replaceAll("-","");
                 String contentType = picFile.getContentType();
                 String imgType = contentType.substring(contentType.indexOf("/")+1);
-                URIpath = "/images/" + uuid + "." + imgType;
+                URIpath = contextPath+"/images/" + uuid + "." + imgType;
                 picFile.transferTo(new File(rootPath + URIpath));
             }
             JSONObject json = new JSONObject();

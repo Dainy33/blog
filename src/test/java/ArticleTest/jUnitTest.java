@@ -5,9 +5,12 @@ import blog.service.IArticleService;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class jUnitTest {
-    public class person{
+    public class person {
         private String leftEyeSight;
         private String rightEyeSight;
 
@@ -35,15 +38,34 @@ public class jUnitTest {
             this.rightEyeSight = rightEyeSight;
         }
     }
+
     @Test
-    public void souts(){
-        person example = new person();
-        example.setLeftEyeSight("5.0");
-        example.setRightEyeSight("4.5");
-        String str="<a href=\"<%=contextPath%>/specificBlog?infoId=\" + element.articleInfoId>";
+    public void souts() throws ParseException {
+/*        Date date = new Date();
+        System.out.println(date);
+        Long stamp =new Date().getTime();
+        System.out.println(stamp);
+        String str = String.valueOf(stamp);
+        System.out.println(str);*/
+
+/*        int a =(int) (System.currentTimeMillis() / 1000);
+        String s = String.valueOf(a);
+        System.out.println(s);*/
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", java.util.Locale.US);
+
+/*        date.setTime(stamp);
+
+        System.out.println(date);*/
+
+
+        String s = String.valueOf(new Date().getTime());
+        System.out.println(s);
+
+        Date date =new Date();
+        date.setTime(new Long(s));
+        System.out.println(date);
     }
-
-
 
 
 }

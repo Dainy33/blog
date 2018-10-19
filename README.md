@@ -153,6 +153,7 @@ default-character-set=utf8
 
 
 ##version web1.1.5
+##description
 * 项目结构重构webapp 迁移到/src/main/
 * 在spring-mvc中加入上传用的bean
 * pom加了两个支持上传的依赖
@@ -160,3 +161,32 @@ default-character-set=utf8
 
 
 
+##version web1.1.6
+##description
+* 上传图片问题解决 将上传图片大小限制改为100kb*10?
+* 上传图片的controller也有一个url也要用绝对路径
+* 新发现 artifacts 添加的 web application 在
+  根目录clsses下 这个设置 project struct 里
+  不过这个blog_war_exploded 我上传的图片都在这里 说明
+  这个文件夹就相当于我发布到tomcat的war解压的内容
+  这个文件夹就是发布的项目文件
+  blog_war_exploded build->build Artifacts才会更新在Build菜单内
+  
+  build 系列影响classes
+  
+  maven系列影响target
+  
+  
+* 时间改成时间戳存储 读取时前台处理吧
+  * * 我直接 new Date().toString()
+  获得的格式:Fri Oct 19 16:03:13 CST 2018
+  我想前台显示这个 前台怎么处理待定 先搞好时间戳
+
+
+
+##version web1.1.7
+##description
+* 分页
+* getLatest给首页
+* 登录功能 writing游客不可见 需要login才能用
+* blog 用getalldesc分页

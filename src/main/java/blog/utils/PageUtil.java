@@ -2,7 +2,7 @@ package blog.utils;
 
 import java.io.Serializable;
 
-public class Page implements Serializable {
+public class PageUtil implements Serializable {
     private static final long serialVersionUID = -3198048449643774660L;
 
     private int pageNow = 1; // 当前页数
@@ -33,7 +33,7 @@ public class Page implements Serializable {
      * @param totalCount
      * @param pageNow
      */
-    public Page(int totalCount, int pageNow) {
+    public PageUtil(int totalCount, int pageNow) {
         this.totalCount = totalCount;
         this.pageNow = pageNow;
     }

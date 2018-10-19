@@ -50,9 +50,7 @@
     <script src="js/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <%--paginate--%>
-    <script type="text/javascript" src="<%=contextPath%>/js/jquery-1.3.2.js"></script>
-    <script type="text/javascript" src="<%=contextPath%>/js/jquery.paginate.js"></script>
+
 
     <script>
         function getLatestTenArticleInfo() {
@@ -121,56 +119,6 @@
                     })
                 },
                 error: function (response) {
-                }
-            });
-        }
-
-        $(function () {
-            $("#getPageIndex").paginate({
-                count: ${pageTotalNum},
-                start: 1,
-                display: 5,
-                border: false,
-                text_color: '#79B5E3',
-                background_color: 'none',
-                text_hover_color: '#2573AF',
-                background_hover_color: 'none',
-                images: false,
-                mouse: 'press',
-                onChange: function (pageNum) {
-                    //alert("pageNum=" + pageNum);
-                    // 输出的pageNum为页码
-                    postPageParams(pageNum, pageSize);
-                }
-            });
-        });
-
-
-        function postPageParams(pageNum, pageSize) {
-            var obj = {};
-            obj['pageNum'] = pageNum;
-            obj['pageSize'] = pageSize;
-            var htmlContent = "";
-            $.ajax({
-                url: "pageDisplay",
-                type: "post",
-                data: JSON.stringify(obj),
-                dataType: "json",
-                contentType: "application/json;charset=UTF-8",
-                timeout: 10000,
-                error: function () {
-                    alert('请求超时，请稍候再试');
-                },
-                success: function (result) {
-                    $("#tb  tr:not(:first)").html("");
-                    for (var i = 0; i < result.length; i++) {
-                        // alert(JSON.stringify(result[i].name));
-                        // var dom = '<li><div class="num">'+result[i].name+'</div></li>';
-                        htmlContent += "<tr style=‘text-align: center‘> "
-                        htmlContent += "<td style=‘text-align: center‘>" + result[i].eid + "</td>"
-                        htmlContent += "</tr>"
-                    }
-                    $('#tb').append(htmlContent);
                 }
             });
         }

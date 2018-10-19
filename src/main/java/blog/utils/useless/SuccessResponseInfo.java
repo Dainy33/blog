@@ -1,4 +1,4 @@
-package blog.utils;
+package blog.utils.useless;
 
 public class SuccessResponseInfo extends ResponseInfo{
     private Object data;

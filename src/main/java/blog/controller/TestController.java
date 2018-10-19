@@ -4,7 +4,7 @@ import blog.model.ArticleComment;
 import blog.model.ArticleContent;
 import blog.model.ArticleInfo;
 import blog.service.IArticleService;
-import blog.utils.ResponseInfo;
+import blog.utils.useless.ResponseInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

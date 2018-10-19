@@ -1,4 +1,4 @@
-package blog.utils;
+package blog.utils.useless;
 
 import java.util.HashMap;
 import java.util.Map;

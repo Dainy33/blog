@@ -125,6 +125,17 @@ public class ArticleServiceImpl implements IArticleService {
         List<BlogComment> blogCommentList = blogCommentDao.getBlogComment();
         return blogCommentList;
     }
+
+    private String currentTimeToString(){
+        String stamp = String.valueOf(new Date().getTime());
+        return stamp;
+    }
+
+    private String stampTimeToDate(String stamp){
+        Date date =new Date();
+        date.setTime(new Long(stamp));
+        return date.toString();
+    }
 }
 /**
  * @program: blog

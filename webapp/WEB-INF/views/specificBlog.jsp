@@ -58,7 +58,7 @@
         function articleInfo() {
             var infoId = "<%= Id%>";
             $.ajax({
-                url: "/article/getArticleInfoByInfoId?infoId=" + infoId.toString(),
+                url: "<%=contextPath%>/article/getArticleInfoByInfoId?infoId=" + infoId.toString(),
                 type: 'GET',
                 data: {},
                 dataType: "json",
@@ -87,7 +87,7 @@
                 success: function (response) {
                     var obj = response;
                     $.each(obj, function (index, element) {
-                        $("#Acontent").html(element.content);
+                        $("#Acontent").html(element.htmlContent);
                     })
                 },
                 error: function (response) {

@@ -22,6 +22,7 @@
 
     <build>
 
+        <!--test目录可以使用main/resources/-->
         <testResources>
             <testResource>
                 <directory>${project.basedir}/src/test/resources</directory>
@@ -32,6 +33,7 @@
         </testResources>
 
 
+        <!--maven package插件-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -46,6 +48,8 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <finalName>blogsystem</finalName>
 
     </build>
 

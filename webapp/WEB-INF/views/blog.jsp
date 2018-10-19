@@ -53,7 +53,6 @@
 
     <script>
         function getLatestTenArticleInfo() {
-            var path=<%=contextPath%>
             $.ajax({
                 url:  "<%=contextPath%>/article/getLatestTenArticleInfo",
                 type: 'GET',
@@ -65,7 +64,7 @@
                         var html = ["<li>",
                             "<div>",
                             "<h2>",
-                            "<a href=\"/specificBlog?infoId=" + element.articleInfoId + "\">",
+                            "<a href='<%=contextPath%>/specificBlog?infoId="+element.articleInfoId+"'>",
                             element.title,
                             "</a>",
                             "</h2>",

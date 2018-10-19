@@ -16,17 +16,22 @@ public class ArticleContent implements Serializable {
 
     private String  articleInfoId;
 
+    //html语言
     @Column(columnDefinition="TEXT", nullable=true)
-    private String content;
+    private String htmlContent;
+
+    //富文本语言
+    @Column(columnDefinition="TEXT", nullable=true)
+    private String editorContent;
 
 
     public ArticleContent() {
     }
 
-    public ArticleContent(String  contentId, String  articleInfoId, String content) {
+    public ArticleContent(String  contentId, String  articleInfoId, String htmlContent) {
         this.contentId = contentId;
         this.articleInfoId = articleInfoId;
-        this.content = content;
+        this.htmlContent = htmlContent;
     }
 
     public String  getContentId() {
@@ -45,12 +50,20 @@ public class ArticleContent implements Serializable {
         this.articleInfoId = articleInfoId;
     }
 
-    public String getContent() {
-        return content;
+    public String getEditorContent() {
+        return editorContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setEditorContent(String editorContent) {
+        this.editorContent = editorContent;
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
     }
 
 

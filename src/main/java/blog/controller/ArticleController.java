@@ -39,15 +39,13 @@ public class ArticleController {
         String infoId = iArticleService.createArticleInfo(articleInfo);
 
         articleContent.setArticleInfoId(infoId);
-        articleContent.setContent(request.getParameter("content"));
+        articleContent.setHtmlContent(request.getParameter("content"));
+        articleContent.setEditorContent(request.getParameter("content-editor-markdown-doc"));
 
         iArticleService.createArticleContent(articleContent);
 
         return "redirect:/blog";
 
-/*
-        return "blog";
-*/
     }
 
     @RequestMapping(value = "createArticleComment", method = RequestMethod.POST)
@@ -75,7 +73,7 @@ public class ArticleController {
         blogComment.setComment(request.getParameter("message"));
 
         iArticleService.createBlogComment(blogComment);
-        return "blog";
+        return "redirect:/blog";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)

@@ -130,3 +130,25 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 * comment分页
 * 评论区加入留言标题
 
+
+##version web1.1.4
+##description
+*所有的绝对路径都改为相对路径
+*editormd 在writing.jsp 下的配置信息的path也要改成绝对路径
+*有一个a href需要转义 里面同时有变量常亮和jsp表达式未解决
+* ArticleController return "blog"bug 
+其实当时的视图仍然是/article/CreateComment(post)
+所以刷新会再次调用
+改成重定向
+*时间降序排序也有问题 String类型按字典序排序了
+* mysql数据库中文问题
+sudo vim /etc/mysql/my.cnf
+最后面加 
+[client]
+default-character-set=utf8
+[mysqld]
+character-set-server=utf8
+[mysql]
+default-character-set=utf8
+
+

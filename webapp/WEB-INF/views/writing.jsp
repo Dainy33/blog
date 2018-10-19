@@ -179,7 +179,7 @@
                 width: "100%",
                 height: 750,
                 syncScrolling: "single",
-                path: "/editormd/lib/",// 项目中lib的目录
+                path: "<%=contextPath%>/editormd/lib/",// 项目中lib的目录
                 saveHTMLToTextarea: true,// 影响后端是否能取到文档中的值
 
 

@@ -208,7 +208,7 @@ default-character-set=utf8
 * 相关jar包
 * https://blog.csdn.net/danzhang1010/article/details/17092869?utm_source=blogxgwz0 
 
-##version web1.1.7
+##version web1.1.8
 ##description
 * 图片上传错误原因找到
             String rootPath = request.getSession().getServletContext().getRealPath("");
@@ -242,3 +242,11 @@ default-character-set=utf8
             return json.toJSONString();
 * file 地址rootPath + URIpath
   src  地址contextPath + URIpath 
+  
+  
+##version web1.1.9
+##description
+
+*重构
+*日志
+*分页

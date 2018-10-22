@@ -66,11 +66,11 @@
     </div>
     <header class="">
         <div class="logo">
-            <a href="#"><img src="<%=contextPath%>/images/logo.png"/></a>
+            <a href="#"><img src="<%=contextPath%>/images/blog/logo.png"/></a>
         </div>
         <div id="owl-slide" class="owl-carousel">
             <div class="item">
-                <img src="<%=contextPath%>/images/slider-1.jpg"/>
+                <img src="<%=contextPath%>/images/blog/slider-1.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="<%=contextPath%>/images/slider-2.jpg"/>
+                <img src="<%=contextPath%>/images/blog/slider-2.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="<%=contextPath%>/images/slider-3.jpg"/>
+                <img src="<%=contextPath%>/images/blog/slider-3.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="<%=contextPath%>/images/slider-4.jpg"/>
+                <img src="<%=contextPath%>/images/blog/slider-4.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="<%=contextPath%>/images/slider-5.jpg"/>
+                <img src="<%=contextPath%>/images/blog/slider-5.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="<%=contextPath%>/images/slider-6.jpg"/>
+                <img src="<%=contextPath%>/images/blog/slider-6.jpg"/>
                 <div class="carousel-caption">
                     <div class="carousel-caption-inner">
                         <p class="carousel-caption-title"><a href="#">Why It’s Important To Struggle</a></p>
@@ -151,7 +151,7 @@
                         <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="<%=contextPath%>/images/1.jpg">
+                        <img src="<%=contextPath%>/images/blog/1.jpg">
                     </div>
                     <div class="entry-content">
                         <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur
@@ -175,7 +175,7 @@
                         <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="<%=contextPath%>/images/2.jpg">
+                        <img src="<%=contextPath%>/images/blog/2.jpg">
                     </div>
                     <div class="entry-content">
                         <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur
@@ -199,7 +199,7 @@
                         <span class="cat-links"><a href="#">BUSINESS</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="<%=contextPath%>/images/3.jpg">
+                        <img src="<%=contextPath%>/images/blog/3.jpg">
                     </div>
                     <div class="entry-content">
                         <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur
@@ -223,7 +223,7 @@
                 <div class="col-1-3 col-footer-1">
                     <div class="wrap-col">
                         <h3>About</h3>
-                        <a href="index.jsp"><img src="<%=contextPath%>/images/avatar.jpg"/></a>
+                        <a href="index.jsp"><img src="<%=contextPath%>/images/blog/avatar.jpg"/></a>
                         <p>To see a world in a grain of sand. And a heaven in a wild flower
                             Hold infinity in the palm of your hand. And eternity in an hour.</p>
                     </div>

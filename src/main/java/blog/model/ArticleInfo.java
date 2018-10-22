@@ -25,7 +25,6 @@ public class ArticleInfo implements Serializable {
 
     //暂时不需要默认为null即可
     private String type;
-    private Boolean isDeleted;
     private Boolean isTop;
     private Boolean isOriginal;
     private Boolean isPrivate;
@@ -70,14 +69,6 @@ public class ArticleInfo implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public Boolean getDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
     }
 
     public Boolean getTop() {

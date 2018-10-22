@@ -141,7 +141,7 @@
     </div>
     <header class="">
         <div class="logo">
-            <a href="#"><img src="<%=contextPath%>/images/logo.png"/></a>
+            <a href="#"><img src="<%=contextPath%>/images/blog/logo.png"/></a>
         </div>
     </header>
     <!--////////////////////////////////////Container-->
@@ -156,7 +156,7 @@
                         <span class="cat-links"><a href="#">STUDY</a>, <a href="#">LIFESTYLE</a></span>
                     </div>
                     <div class="post-thumbnail-wrap">
-                        <img src="<%=contextPath%>/images/1.jpg">
+                        <img src="<%=contextPath%>/images/blog/1.jpg">
                     </div>
                     <div class="entry-content">
                         <%--blog展示主页的简介--%>
@@ -236,7 +236,7 @@
                 <div class="col-1-3 col-footer-1">
                     <div class="wrap-col">
                         <h3>About</h3>
-                        <a href="index.jsp"><img src="<%=contextPath%>/images/avatar.jpg"/></a>
+                        <a href="index.jsp"><img src="<%=contextPath%>/images/blog/avatar.jpg"/></a>
                         <p>To see a world in a grain of sand. And a heaven in a wild flower
                             Hold infinity in the palm of your hand. And eternity in an hour.</p>
                     </div>

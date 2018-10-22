@@ -38,7 +38,7 @@ public class UploadController {
                 String uuid = UUID.randomUUID().toString().replaceAll("-","");
                 String contentType = picFile.getContentType();
                 String imgType = contentType.substring(contentType.indexOf("/")+1);
-                URIpath = "/images/" + uuid + "." + imgType;
+                URIpath = "/images/upload/" + uuid + "." + imgType;
                 picFile.transferTo(new File(rootPath + URIpath));
             }
             JSONObject json = new JSONObject();

@@ -207,3 +207,38 @@ default-character-set=utf8
 * https://www.cnblogs.com/LiuChunfu/p/4917934.html
 * 相关jar包
 * https://blog.csdn.net/danzhang1010/article/details/17092869?utm_source=blogxgwz0 
+
+##version web1.1.7
+##description
+* 图片上传错误原因找到
+            String rootPath = request.getSession().getServletContext().getRealPath("");
+            String URIpath = "";
+            String contextPath = request.getContextPath();
+            if(!picFile.isEmpty()){
+                String uuid = UUID.randomUUID().toString().replaceAll("-","");
+                String contentType = picFile.getContentType();
+                String imgType = contentType.substring(contentType.indexOf("/")+1);
+                URIpath = contextPath+"/images/" + uuid + "." + imgType;
+                picFile.transferTo(new File(rootPath + URIpath));
+            }
+* contextPath和rootPath有重合的地方:项目名称部分
+/usr/java/tomcat/apache-tomcat-7.0.90/webapps/blogsystem/blogsystem/images/68549ce1ea69462ea7496bda152f1ac5.png (No such file or directory)
+
+*正确改法
+            String rootPath = request.getSession().getServletContext().getRealPath("");
+            String URIpath = "";
+            String contextPath = request.getContextPath();
+            if(!picFile.isEmpty()){
+                String uuid = UUID.randomUUID().toString().replaceAll("-","");
+                String contentType = picFile.getContentType();
+                String imgType = contentType.substring(contentType.indexOf("/")+1);
+                URIpath = "/images/" + uuid + "." + imgType;
+                picFile.transferTo(new File(rootPath + URIpath));
+            }
+            JSONObject json = new JSONObject();
+            json.put("success", 1);
+            json.put("message", "upload succeed！");
+            json.put("url", contextPath + URIpath);
+            return json.toJSONString();
+* file 地址rootPath + URIpath
+  src  地址contextPath + URIpath 

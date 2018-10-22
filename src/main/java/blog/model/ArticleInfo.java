@@ -1,11 +1,10 @@
 package blog.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name = "articleInfo")
@@ -14,7 +13,9 @@ public class ArticleInfo implements Serializable {
     @Id
     @Column
     private String articleInfoId;
-    private String createDate;
+
+    @JsonFormat(pattern = "EEE MMM dd HH:mm:ss z yyyy" ,timezone = "GMT+8")
+    private Date createDate;
 
     private String title;
     private String author;
@@ -111,11 +112,11 @@ public class ArticleInfo implements Serializable {
         this.description = description;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 }

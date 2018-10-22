@@ -37,7 +37,7 @@ public class ArticleServiceImpl implements IArticleService {
     public String createArticleInfo(ArticleInfo articleInfo) {
         String articleInfoId = UUID.randomUUID().toString();
         articleInfo.setArticleInfoId(articleInfoId);
-        articleInfo.setCreateDate(new Date().toString());
+        articleInfo.setCreateDate(new Date());
         articleInfoDao.save(articleInfo);
         return articleInfoId;
     }

@@ -190,3 +190,20 @@ default-character-set=utf8
 * getLatest给首页
 * 登录功能 writing游客不可见 需要login才能用
 * blog 用getalldesc分页
+
+* JsonFormat注解
+* JDBC中存入数据库的应该是java.sql.Date,它是java.util.Date的子类，需要转换
+* 在hibernate中就不需要啦！直接存java.util.Date即可！因为hibernate自己会转换的。
+
+
+##version web1.1.7+
+##description
+* 数据库存date 前台显示Long time时间戳
+* https://blog.csdn.net/zhanglf02/article/details/77770118
+* 原因
+* https://segmentfault.com/q/1010000014603179/a-1020000014603385
+* jsonObject会隐式将Date转换成Longtime 
+* https://blog.csdn.net/saber_6789/article/details/52663327
+* https://www.cnblogs.com/LiuChunfu/p/4917934.html
+* 相关jar包
+* https://blog.csdn.net/danzhang1010/article/details/17092869?utm_source=blogxgwz0 

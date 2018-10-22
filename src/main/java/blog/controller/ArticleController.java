@@ -109,7 +109,7 @@ public class ArticleController {
     public String getArticleInfoByInfoId(HttpServletRequest request, HttpServletResponse response, @RequestParam String infoId) {
 
         ArticleInfo articleInfo = iArticleService.getArticleInfoByInfoId(infoId);
-        String responseInfo = JsonUtil.beanToJson(articleInfo);
+        String responseInfo = JsonUtil.beanToJson(articleInfo,"EEE MMM dd HH:mm:ss z yyyy");
         responseInfo = "[" + responseInfo + "]";
         return responseInfo;
     }

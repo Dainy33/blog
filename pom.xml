@@ -47,6 +47,14 @@
                     </webResources>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
         </plugins>
 
         <finalName>blogsystem</finalName>
@@ -202,6 +210,8 @@
         java.lang.IllegalArgumentException: No converter found for return value of type: class com.dainy.naughty.utils.SuccessResponseInfo
         springmvc默认是没有对象转换成json的转换器的，需要手动添加jackson依赖
         -->
+        <!--时间在数据库是Date类型，传给前台显示为时间戳-->
+        <!--https://blog.csdn.net/zhanglf02/article/details/77770118-->
         <!--jackson-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -223,8 +233,20 @@
 
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
         </dependency>
 
 

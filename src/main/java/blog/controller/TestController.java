@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping(value = "/testController")
+@RequestMapping(value = "/test")
 public class TestController {
     @Resource
     IArticleService iArticleService;
 
-    //http://localhost:8080/testController/createInfoTest
+    //http://localhost:8080/test/createInfoTest
     @RequestMapping(value = "/createInfoTest")
     @ResponseBody
     public String createInfoTest() {
@@ -29,7 +29,7 @@ public class TestController {
         return "Banana!";
     }
 
-    //http://localhost:8080/testController/createContentTest
+    //http://localhost:8080/test/createContentTest
     @RequestMapping(value = "/createContentTest")
     @ResponseBody
     public String createContentTest(){
@@ -37,7 +37,7 @@ public class TestController {
         iArticleService.createArticleContent(articleContent);
         return "Banana!";
     }
-    //http://localhost:8080/testController/createCommentTest
+    //http://localhost:8080/test/createCommentTest
     @RequestMapping(value = "/createCommentTest")
     @ResponseBody
     public String createCommentTest(){
@@ -46,7 +46,7 @@ public class TestController {
         return "Banana!";
     }
 
-    //http://localhost:8080/testController/getCommentByIdTest
+    //http://localhost:8080/test/getCommentByIdTest
     @RequestMapping(value = "/getCommentByIdTest")
     @ResponseBody
     public ResponseInfo getCommentByIdTest(){

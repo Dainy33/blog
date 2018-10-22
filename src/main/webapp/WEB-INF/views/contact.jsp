@@ -12,7 +12,7 @@
   ================================================== -->
     <meta charset="utf-8">
     <title>Kalaa</title>
-    <meta name="description" content="Free Responsive Html5 Css3 Templates ">
+    <meta name="description" content="Dainy">
     <meta name="author" content="#">
 
     <!-- Mobile Specific Metas
@@ -21,16 +21,16 @@
 
     <!-- CSS
 	================================================== -->
-    <link rel="stylesheet" href="<%=contextPath%>/css/zerogrid.css">
-    <link rel="stylesheet" href="<%=contextPath%>/css/style.css">
+    <link rel="stylesheet" href="<%=contextPath%>/css/blog/zerogrid.css">
+    <link rel="stylesheet" href="<%=contextPath%>/css/blog/style.css">
 
     <!-- Custom Fonts -->
     <link href="<%=contextPath%>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-    <link rel="stylesheet" href="<%=contextPath%>/css/menu.css">
-    <script src="<%=contextPath%>/js/jquery1111.min.js" type="text/javascript"></script>
-    <script src="<%=contextPath%>/js/script.js"></script>
+    <link rel="stylesheet" href="<%=contextPath%>/css/blog/menu.css">
+    <script src="<%=contextPath%>/js/blog/jquery1111.min.js" type="text/javascript"></script>
+    <script src="<%=contextPath%>/js/blog/script.js"></script>
 
     <!-- Owl Carousel Assets -->
     <link href="<%=contextPath%>/owl-carousel/owl.carousel.css" rel="stylesheet">
@@ -60,7 +60,7 @@
             <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
             <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
 
-            <li><a href='<%=contextPath%>/writing'><span>Writing</span></a></li>
+            <li><a href='<%=contextPath%>/login'><span>Log And Write</span></a></li>
             <li class='active last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>

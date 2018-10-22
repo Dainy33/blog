@@ -17,8 +17,13 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/writing")
-    public String about(HttpServletRequest request, HttpServletResponse response){
+    public String write(HttpServletRequest request, HttpServletResponse response){
         return "writing";
+    }
+
+    @RequestMapping(value = "/login")
+    public String login(HttpServletRequest request, HttpServletResponse response){
+        return "login";
     }
 
     @RequestMapping(value = "/contact")

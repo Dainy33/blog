@@ -9,24 +9,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping(value = "/userController")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Resource
     private IUserService iUserService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginForm() {
-        return "user/loginForm";
-    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         boolean result = iUserService.ensureUser(username,password);
         if(result){
-            return "common/success";
+            return "redirect:/writing";
         }
-        return "common/error";
+        return "redirect:/login";
     }
 
 

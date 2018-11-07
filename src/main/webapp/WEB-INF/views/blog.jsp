@@ -57,7 +57,7 @@
             var pageSize = 10;
 
             $.ajax({
-                url: "<%=contextPath%>/article/getLatestTenArticleInfo",
+                url: "<%=contextPath%>/article/getAllArticleInfo",
                 type: 'GET',
                 data: {},
                 dataType: "json",

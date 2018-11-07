@@ -24,6 +24,12 @@ public class ArticleInfoDao extends GenericDao<ArticleInfo,Integer>{
         return query.list();
     }
 
+    public List<ArticleInfo> getAllArticleInfo() {
+        String hql = "from ArticleInfo order by createDate desc";
+        Query query =getSession().createQuery(hql);
+        return query.list();
+    }
+
     public ArticleInfo getArticleInfoByInfoId(String infoId) {
         String hql = "from ArticleInfo where articleInfoId = :articleInfoId";
         Query query =getSession().createQuery(hql);

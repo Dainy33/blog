@@ -121,6 +121,12 @@ public class ArticleServiceImpl implements IArticleService {
         return articleInfoList;
     }
 
+    @Override
+    public List<ArticleInfo> getAllArticleInfo() {
+        List<ArticleInfo> allArticleInfo = articleInfoDao.getAllArticleInfo();
+        return allArticleInfo;
+    }
+
     public List<BlogComment> getBlogComment() {
         List<BlogComment> blogCommentList = blogCommentDao.getBlogComment();
         return blogCommentList;

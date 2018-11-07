@@ -3,6 +3,7 @@ package blog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +17,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/writing")
-    public String write(HttpServletRequest request, HttpServletResponse response){
-        return "writing";
+    @RequestMapping(value = "/writeTrans")
+    public String write(HttpServletRequest request, HttpServletResponse response,@RequestParam(defaultValue = "error")String identify){
+        return (identify.equals("Yan"))?"writing":"login";
     }
 
     @RequestMapping(value = "/login")

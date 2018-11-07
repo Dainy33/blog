@@ -95,6 +95,15 @@ public class ArticleController {
         return responseInfo;
     }
 
+    //返回所有文章
+    @RequestMapping(value = "/getAllArticleInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public String getAllArticleInfo(HttpServletRequest request, HttpServletResponse response) {
+        List<ArticleInfo> allArticleInfo = iArticleService.getLatestTenArticleInfo();
+        String responseInfo = JsonUtil.beanToJson(allArticleInfo);
+        return responseInfo;
+    }
+
     //返回Blog页面的评论 N max =10
     @RequestMapping(value = "/getBlogComment", method = RequestMethod.GET)
     @ResponseBody

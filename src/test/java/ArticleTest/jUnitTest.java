@@ -58,13 +58,19 @@ public class jUnitTest {
 
         System.out.println(date);*/
 
-
+/*
         String s = String.valueOf(new Date().getTime());
         System.out.println(s);
 
         Date date =new Date();
         date.setTime(new Long(s));
-        System.out.println(date);
+        System.out.println(date);*/
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("abcdefghij");
+        System.out.println(sb.length());
+
+        //System.out.println(System.getenv("TERM"));
     }
 
 

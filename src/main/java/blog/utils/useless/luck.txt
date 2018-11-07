@@ -1,0 +1,301 @@
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.InterruptedIOException;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.io.PrintStream;
+import java.util.Locale;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.zip.GZIPOutputStream;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.felix.service.command.CommandProcessor;
+import org.apache.felix.service.threadio.ThreadIO;
+import org.apache.karaf.shell.console.Console;
+import org.apache.karaf.shell.console.ConsoleFactory;
+import org.ops4j.pax.cdi.api.OsgiService;
+import org.osgi.framework.BundleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+@Singleton
+public class WebShell extends HttpServlet {
+	 private final Logger logger = LoggerFactory.getLogger(WebShell.class);
+//
+	    public static final String NAME = "webshell";
+//	    public static final String LABEL = "Gogo";
+	    public static final int TERM_WIDTH = 120;
+	    public static final int TERM_HEIGHT = 39;
+	    private static final int MOST_LENGTH = 1000;
+		private static final int Line_length = 60;
+		private int wheelIndex = 0;
+
+		private int logcount = 0;
+
+
+		private final Semaphore semaphore = new Semaphore(1);
+
+	    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
+	    private final Lock readLock = rwLock.readLock();
+	    private final Lock writeLock = rwLock.writeLock();
+
+		@OsgiService @Inject
+	    private CommandProcessor commandProcessor;
+	    @OsgiService @Inject
+	    private ConsoleFactory consoleFactory;
+	    @OsgiService @Inject
+	    private ThreadIO threadIO;
+
+	    public void setCommandProcessor(CommandProcessor commandProcessor) {
+	        this.commandProcessor = commandProcessor;
+	    }
+
+	    public void setConsoleFactory(ConsoleFactory consoleFactory) {
+	        this.consoleFactory = consoleFactory;
+	    }
+
+	    public void setThreadIO(ThreadIO threadIO) {
+	        this.threadIO = threadIO;
+	    }
+
+	    @Override
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//			logger.error("doPost Thread info----"+Thread.currentThread().getId()+"__"+Thread.currentThread().getName());
+
+
+			String encoding = request.getHeader("Accept-Encoding");
+	        boolean supportsGzip = (encoding != null && encoding.toLowerCase().indexOf("gzip") > -1);
+	        SessionTerminal st = (SessionTerminal) request.getSession(true).getAttribute("terminal");
+	        if (st == null || st.isClosed()) {
+	            st = new SessionTerminal();
+	            request.getSession().setAttribute("terminal", st);
+	        }
+	        String str = request.getParameter("k");
+	        String f = request.getParameter("f");
+			int temp = Integer.valueOf(request.getParameter("wheelIndex"));
+			try {
+				semaphore.acquire();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			wheelIndex = temp;
+
+			logcount++;
+			if(logcount%3==0){
+				logger.info("logcount= "+logcount);
+			}
+
+			String dump = st.handle(str, f != null && f.length() > 0);
+			semaphore.release();
+	        if (dump != null) {
+	            if (supportsGzip) {
+					dump = dump.replaceAll("\\$\\{USER}","kalaf");
+	                response.setHeader("Content-Encoding", "gzip");
+	                response.setHeader("Content-Type", "text/html");
+	                try {
+	                    GZIPOutputStream gzos = new GZIPOutputStream(response.getOutputStream());
+	                    gzos.write(dump.getBytes());
+	                    gzos.close();
+	                } catch (IOException ie) {
+	                    // handle the error here
+	                    ie.printStackTrace();
+	                }
+	            } else {
+	                response.getOutputStream().write(dump.getBytes());
+	            }
+	        }
+	    }
+
+	    public class SessionTerminal implements Runnable {
+
+	        private Terminal terminal;
+	        private PipedOutputStream in;
+	        private PipedInputStream out;
+	        private boolean closed;
+	        private StringBuilder historySb;
+	        private int offset=0;
+			private int preRows = 0;
+			private boolean scrollSwitch=false;
+
+
+	        public SessionTerminal() throws IOException {
+	            try {
+	                this.terminal = new Terminal(TERM_WIDTH, TERM_HEIGHT);
+	                terminal.write("\u001b\u005B20\u0068"); // set newline mode on
+
+	                in = new PipedOutputStream();
+	                out = new PipedInputStream();
+	                historySb = new StringBuilder();
+	                final PrintStream pipedOut = new PrintStream(new PipedOutputStream(out), true);
+
+//	                AccessControlContext acc = AccessController.getContext();
+//	                Subject subject = Subject.getSubject(acc);
+//	                String userName = JaasHelper.getUserName(subject);
+
+//					jline.TerminalFactory.configure("unix");
+
+	                Console console = consoleFactory.create(commandProcessor,
+	                        threadIO,
+	                        new PipedInputStream(in),
+	                        pipedOut,
+	                        pipedOut,
+	                        new WebTerminal(TERM_WIDTH, TERM_HEIGHT),
+	                        null,
+	                        null);
+//	                new Thread(console, "Karaf Console Web for user " + userName).start();
+	                new Thread(console, "Karaf Console Web for user ").start();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	                throw e;
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	                throw (IOException) new IOException().initCause(e);
+	            }
+	            new Thread(this).start();
+	        }
+
+	        public boolean isClosed() {
+	            return closed;
+	        }
+
+
+	        public String handle(String str, boolean forceDump) throws IOException {
+	            try {
+					if(wheelIndex!=0&&(str==null||str.length()==0)&&preRows>TERM_HEIGHT){
+						scrollSwitch = true;
+						this.scroll();
+					}
+	                if (str != null && str.length() > 0) {
+	                    String d = terminal.pipe(str);
+	                    for (byte b : d.getBytes()) {
+	                        in.write(b);
+	                    }
+						//flush才会run所以怎么触发flush
+	                    in.flush();
+	                }
+
+	            } catch (IOException e) {
+	                closed = true;
+	                throw e;
+	            }
+	            try {
+	                return terminal.dump(10, forceDump);
+	            } catch (InterruptedException e) {
+	                throw new InterruptedIOException(e.toString());
+	            }
+	        }
+
+	        public void run() {
+				//logger.error("run Thread info----"+Thread.currentThread().getId()+"__"+Thread.currentThread().getName());
+				try {
+	                for (; ; ) {
+	                    byte[] buf = new byte[8192];
+	                    int l = out.read(buf);
+	                    InputStreamReader r = new InputStreamReader(new ByteArrayInputStream(buf, 0, l));
+	                    StringBuilder sb = new StringBuilder();
+	                    preRows=historySb.toString().split("\n").length;
+	                    for (; ; ) {
+	                        int c = r.read();
+	                        if (c == -1) {
+	                            break;
+	                        }
+	                        sb.append((char) c);
+	                        historySb.append((char) c);
+	                    }
+						if (sb.length() > 0) {
+							String newStr =  historySb.toString();
+							String[] split = newStr.split("\n");
+							int newRows= split.length;
+							int N=newRows-preRows;
+
+							//>=1000?
+							//TODO
+							if(newRows>=MOST_LENGTH){
+								StringBuilder tempSb = new StringBuilder();
+								for (int i = newRows-MOST_LENGTH; i < newRows-1; i++) {
+									tempSb.append(split[i]).append("\n");
+								}
+								//i = newRows-1 拼到一行
+								if(sb.length()==1){
+									tempSb.append(split[newRows-1]);
+								}else {
+									tempSb.append(split[newRows-1]).append("\n");
+								}
+								historySb = tempSb;
+							}
+
+
+							if(wheelIndex!=0&&!scrollSwitch&&newRows>TERM_HEIGHT){
+								//滚动开关
+	                    		scrollSwitch=true;
+							}
+
+	                    	if(scrollSwitch){
+								offset = offset + N;
+								scroll();
+
+							}else {
+								terminal.write(sb.toString());
+
+							}
+
+	                    }
+	                    String s = terminal.read();
+	                    if (s != null && s.length() > 0) {
+	                        for (byte b : s.getBytes()) {
+	                            in.write(b);
+	                        }
+	                    }
+	                }
+	            } catch (IOException e) {
+	                closed = true;
+	                e.printStackTrace();
+	            }
+	        }
+
+	        public void scroll(){
+
+	        	//wheelIndex
+				offset = offset + wheelIndex/Line_length;
+
+				//偏移的两种特殊情况
+				if(offset<=0){
+					//offset<=0 重置 scrollSwitch=false; offset = 0;
+					scrollSwitch = false;
+					offset = 0;
+				}
+
+				String[] newSplit = historySb.toString().split("\n");
+				int length = newSplit.length;
+
+				if(offset+TERM_HEIGHT>=length){
+					//-1待定
+					offset = length - 1 - TERM_HEIGHT;
+				}
+
+				{
+					StringBuilder scrollPage = new StringBuilder();
+					int i=length-1-offset-TERM_HEIGHT;
+					for(;i<length-1-offset;i++){
+						scrollPage.append(newSplit[i]).append("\n");
+					}
+					scrollPage.append(newSplit[i]);
+					terminal.write(scrollPage.toString());
+				}
+			}
+	    }
+}
+
+

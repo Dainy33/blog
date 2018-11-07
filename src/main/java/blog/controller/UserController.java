@@ -20,7 +20,7 @@ public class UserController {
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         boolean result = iUserService.ensureUser(username,password);
         if(result){
-            return "redirect:/writing";
+            return "redirect:/writeTrans?identify=Yan";
         }
         return "redirect:/login";
     }
@@ -34,10 +34,8 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@RequestParam("username") String username, @RequestParam("password1") String password1, @RequestParam("password2") String password2) {
         boolean result = iUserService.createUser(username, password1, password2);
-        if(result){
-            return "common/success";
-        }
-        return "common/error";
+
+        return (result=true)?"success":"error";
     }
 
 

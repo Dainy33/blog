@@ -45,6 +45,8 @@ public interface IArticleService {
 
     public List<ArticleInfo>  getLatestTenArticleInfo();
 
+    public List<ArticleInfo>  getAllArticleInfo();
+
     public List<BlogComment> getBlogComment();
 
 

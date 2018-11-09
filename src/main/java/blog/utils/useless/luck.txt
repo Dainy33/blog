@@ -228,7 +228,7 @@ public class WebShell extends HttpServlet {
 									tempSb.append(split[i]).append("\n");
 								}
 								//i = newRows-1 拼到一行
-								if(sb.length()==1){
+								if(sb.toString().endsWith("\n")){
 									tempSb.append(split[newRows-1]);
 								}else {
 									tempSb.append(split[newRows-1]).append("\n");

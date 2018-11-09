@@ -3,8 +3,10 @@ package ArticleTest;
 import blog.model.ArticleInfo;
 import blog.service.IArticleService;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +39,12 @@ public class jUnitTest {
         public void setRightEyeSight(String rightEyeSight) {
             this.rightEyeSight = rightEyeSight;
         }
+    }
+
+
+    @Test()
+    public void cook(){
+        Cookie cookie = new Cookie("Name","Pancake");
     }
 
     @Test

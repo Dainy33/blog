@@ -25,7 +25,7 @@ public class ArticleController {
     IArticleService iArticleService;
 
 
-    @RequestMapping(value = "/writing", method = RequestMethod.POST)
+    @RequestMapping(value = "/write", method = RequestMethod.POST)
     public String write(HttpServletRequest request, HttpServletResponse response) {
 
         ArticleInfo articleInfo = new ArticleInfo();

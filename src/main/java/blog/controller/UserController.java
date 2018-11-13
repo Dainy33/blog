@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -17,10 +19,11 @@ public class UserController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public String login(HttpServletRequest request, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password) {
         boolean result = iUserService.ensureUser(username,password);
         if(result){
-            return "redirect:/writeTrans?identify=Yan";
+            request.getSession().setAttribute("username",username);
+            return "redirect:/writing";
         }
         return "redirect:/login";
     }

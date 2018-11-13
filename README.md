@@ -136,7 +136,11 @@ SpringMVC 中 需要配置 对静态资源文件的访问
 *所有的绝对路径都改为相对路径
 *editormd 在writing.jsp 下的配置信息的path也要改成绝对路径
 *有一个a href需要转义 里面同时有变量常亮和jsp表达式未解决
-* ArticleController return "blog"bug 
+* ArticleController  CreateComment  若 return "blog" 会bug
+bug  url表现为 /article/blog 实际想要的是 /blog
+因为 return 解析写相对路径的话 ,
+相对于 /article/CreateComment 的相对路径
+是(上一级 即/article)所以解析的是/article/blog
 其实当时的视图仍然是/article/CreateComment(post)
 所以刷新会再次调用
 改成重定向
@@ -250,3 +254,8 @@ default-character-set=utf8
 *重构
 *日志
 *分页
+
+##version web1.1.10
+##description
+
+*Writing要登录filter

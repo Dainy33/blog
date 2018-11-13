@@ -17,9 +17,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/writeTrans")
-    public String write(HttpServletRequest request, HttpServletResponse response,@RequestParam(defaultValue = "error")String identify){
-        return (identify.equals("Yan"))?"writing":"login";
+    @RequestMapping(value = "/writing")
+    public String write(HttpServletRequest request, HttpServletResponse response){
+        return "writing";
     }
 
     @RequestMapping(value = "/login")

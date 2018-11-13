@@ -49,6 +49,15 @@
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>blog.utils.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/writing</url-pattern>
+    </filter-mapping>
+
 
     <!-- 配置springmvc的前端控制器(分发器) -->
     <!--spring-mvc.xml-->

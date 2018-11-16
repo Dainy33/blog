@@ -60,7 +60,7 @@
             <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
             <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
 
-            <li><a href='<%=contextPath%>/writing'><span>Log And Write</span></a></li>
+            <li><a href='<%=contextPath%>/writing'><span>Write</span></a></li>
             <li class='active last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>

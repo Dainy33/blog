@@ -63,7 +63,7 @@
         <ul>
             <li><a href='<%=contextPath%>/'><span>Home</span></a></li>
             <li><a href='<%=contextPath%>/blog'><span>Blog</span></a></li>
-            <li class="active"><a href='<%=contextPath%>/writing'><span>Log And Write</span></a></li>
+            <li class="active"><a href='<%=contextPath%>/writing'><span>Write</span></a></li>
             <li class='last'><a href='<%=contextPath%>/contact'><span>Contacts</span></a></li>
         </ul>
     </div>
@@ -93,7 +93,8 @@
                         <input type="text" name="description" value="简介:" required
                                onfocus='if(this.value=="简介:"){this.value="";};'
                                onblur='if(this.value==""){this.value="简介:";};'>
-                        <div class="entry-content">
+                        <%--<div class="entry-content">--%>
+                        <div>
                             <div class="editormd" id="content-editor">
                                 <textarea class="editormd-markdown-textarea"
                                           name="content-editor-markdown-doc"

@@ -178,7 +178,7 @@
         $(function () {
             editormd("content-editor", { // 和上面的名字保持一致
                 width: "100%",
-                height: 750,
+                height: 900,
                 syncScrolling: "single",
                 path: "<%=contextPath%>/editormd/lib/",// 项目中lib的目录
                 saveHTMLToTextarea: true,// 影响后端是否能取到文档中的值

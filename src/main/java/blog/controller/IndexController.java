@@ -37,6 +37,11 @@ public class IndexController {
         return "blog";
     }
 
+    @RequestMapping(value = "/manage")
+    public String manage(HttpServletRequest request, HttpServletResponse response){
+        return "manage";
+    }
+
     @RequestMapping(value = "/specificBlog")
     public String specificBlog(HttpServletRequest request, HttpServletResponse response, @RequestParam String infoId){
         //infoId怎么给specificBlog视图

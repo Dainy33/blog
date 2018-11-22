@@ -2,6 +2,7 @@ package ArticleTest;
 
 import blog.model.ArticleInfo;
 import blog.service.IArticleService;
+import com.alibaba.fastjson.JSONPath;
 import org.junit.Test;
 import org.junit.experimental.theories.suppliers.TestedOn;
 
@@ -45,6 +46,28 @@ public class jUnitTest {
     @Test()
     public void cook(){
         Cookie cookie = new Cookie("Name","Pancake");
+    }
+
+
+    @Test
+    public void itest(){
+        String[] strings= {"111","222","333","444"};
+        for (String s:strings){
+            if(s.equals("333")){
+                break;
+            }
+            System.out.println(s);
+        }
+        for(String s:strings){
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void jpTest(){
+        String sessionInfo ="{\"accountStructure\":\"2\",\"aliyunID\":\"aliyuntest\",\"aliyunPK\":\"999999999\",\"bid\":false,\"createTime\":1412870400000,\"createUser\":\"26842\",\"expired\":false,\"isMfaChecked\":\"false\",\"partnerPk\":\"26842\",\"role\":\"user\",\"status\":0,\"updateTime\":1412870400000}";
+        Object read = JSONPath.read(sessionInfo, "$.aliyunPK");
+        System.out.println(read);
     }
 
     @Test

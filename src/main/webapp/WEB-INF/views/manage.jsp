@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
+        <% String contextPath = request.getContextPath(); %>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="左右结构项目，属于大人员的社交工具">
@@ -10,10 +12,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="format-detection" content="telephone=no">
         <title>Bootstrap左右结构响应式后台管理模板</title>
-        <script src="js/manage/jquery.min.js"></script>
-        <script src="js/manage/bootstrap.min.js"></script>
+        <script src="<%=contextPath%>/js/manage/jquery.min.js"></script>
+        <script src="<%=contextPath%>/js/manage/bootstrap.min.js"></script>
 
-        <% String contextPath = request.getContextPath(); %>
 
         <script>
             $(function() {

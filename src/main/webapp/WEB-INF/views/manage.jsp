@@ -7,11 +7,11 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="左右结构项目，属于大人员的社交工具">
-        <meta name="keywords" content="左右结构项目 社交 占座 ">
+        <meta name="description" content="Kalaa后台管理系统">
+        <meta name="keywords" content="Dainy33">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="format-detection" content="telephone=no">
-        <title>Bootstrap左右结构响应式后台管理模板</title>
+        <title>Kalaa后台管理系统</title>
         <script src="<%=contextPath%>/js/manage/jquery.min.js"></script>
         <script src="<%=contextPath%>/js/manage/bootstrap.min.js"></script>
 
@@ -68,11 +68,11 @@
             <!-- 左侧菜单栏目块 -->
             <div class="leftMeun" id="leftMeun">
                 <div id="logoDiv">
-                    <p id="logoP"><img id="logo" alt="左右结构项目" src="<%=contextPath%>/images/manage/logo.png"><span>左右结构项目</span></p>
+                    <p id="logoP"><img id="logo" alt="后台管理系统" src="<%=contextPath%>/images/manage/logo.png"><span>后台管理系统</span></p>
                 </div>
                 <div id="personInfor">
-                    <p id="userName">杨鹏</p>
-                    <p><span>yangxp@qq.com</span> More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                    <p id="userName">王柄楠</p>
+                    <p><span>m_Dainy33.com</span></p>
                     <p>
                         <a>退出登录</a>
                     </p>

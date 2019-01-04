@@ -27,7 +27,7 @@
     
 
 
-    <!-- 加载spring的配置文件 -->
+    <!-- 加载spring的配置文件到上下文 -->
     <!--applicationContext.xml-->
     <context-param>
         <param-name>contextConfigLocation</param-name>

@@ -10,7 +10,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class jUnitTest {
     public class person {
@@ -102,6 +105,27 @@ public class jUnitTest {
         System.out.println(sb.length());
 
         //System.out.println(System.getenv("TERM"));
+    }
+
+    @Test
+    public void dicsort(){
+        List<String> list = new ArrayList<String>();
+
+        list.add("123fuckaaa");
+        list.add("123fuckaa0");
+        //list.add("-23fuckaaa");
+
+        //list.add("123fuckaaa0");
+        list.add("aaasssdsad");
+        list.add("abc-dtdream-com");
+        list.add("asr-test1");
+        list.add("asr-test2");
+        list.add("");
+
+
+        Collections.sort(list);
+
+        System.out.println(list);
     }
 
 

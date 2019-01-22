@@ -19,7 +19,6 @@
    		http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
 
-
     <!-- 扫描自定义的Controller -->
     <context:component-scan base-package="blog.controller"/>
 
@@ -41,7 +40,7 @@
 
 
     <!--静态图片加载-->
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
     <!--开启对文件上传的支持-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

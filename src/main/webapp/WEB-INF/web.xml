@@ -35,6 +35,11 @@
         <listener-class>blog.listener.HelloWorldListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>blog.listener.OnlineUserSessionListener</listener-class>
+    </listener>
+
+
 
     <!-- 加载spring的配置文件到上下文 -->
     <!--applicationContext.xml-->

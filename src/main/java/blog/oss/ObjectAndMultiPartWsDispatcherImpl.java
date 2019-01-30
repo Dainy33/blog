@@ -2,6 +2,7 @@ package blog.oss;
 
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -26,6 +27,95 @@ public class ObjectAndMultiPartWsDispatcherImpl implements ObjectAndMultiPartWsD
         String path = uriInfo.getPath();
         MultivaluedMap<String, String> pathParameters = uriInfo.getPathParameters();
         MultivaluedMap<String, String> queryParameters = uriInfo.getQueryParameters();
+
+        //putObject copyObject putObjectAcl
+        //uploadPart uploadPartCopy
+
+        List<PathSegment> dirList = uriInfo.getPathSegments();
+
+        //get query
+
+        List<String> acl = queryParameters.get("acl");
+        List<String> uploadId = queryParameters.get("uploadId");
+        List<String> partNumber = queryParameters.get("partNumber");
+
+        if (partNumber == null) {
+            //Object
+            if (acl == null) {
+                //get header
+
+                List<String> xOssCopySource = httpHeaders.getRequestHeader("x-oss-copy-source");
+                if (xOssCopySource == null) {
+                    //putObject
+
+                    //get header
+                    List<String> host = httpHeaders.getRequestHeader("Host");
+                    List<String> cacheControl = httpHeaders.getRequestHeader("Cache-Control");
+                    List<String> contentDisposition = httpHeaders.getRequestHeader("Content-Disposition");
+                    List<String> contentEncoding = httpHeaders.getRequestHeader("Content-Encoding");
+                    List<String> contentMd5 = httpHeaders.getRequestHeader("Content-Md5");
+                    List<String> contentLength = httpHeaders.getRequestHeader("Content-Length");
+                    List<String> etag = httpHeaders.getRequestHeader("ETag");
+                    List<String> expires = httpHeaders.getRequestHeader("Expires");
+                    List<String> xOssServerSideEncryption = httpHeaders.getRequestHeader("x-oss-server-side-encryption");
+                    List<String> xOssServerSideEncryptionKeyId = httpHeaders.getRequestHeader("x-oss-server-side-encryption-key-id");
+                    List<String> xOssObjectAcl = httpHeaders.getRequestHeader("x-oss-object-acl");
+                    List<String> xOssStorageClass = httpHeaders.getRequestHeader("x-oss-storage-class");
+
+                    InputStream is = StringToInputStream(body);
+
+                } else {
+                    //copyObject
+
+                    //get header
+                    List<String> host = httpHeaders.getRequestHeader("Host");
+                    List<String> xOssCopySourceIfMatch = httpHeaders.getRequestHeader("x-oss-copy-source-if-match");
+                    List<String> xOssCopySourceIfNoneMatch = httpHeaders.getRequestHeader("x-oss-copy-source-if-none-match");
+                    List<String> xOssCopySourceIfModifiedSince = httpHeaders.getRequestHeader("x-oss-copy-source-if-modified-since");
+                    List<String> xOssCopySourceIfUnmodifiedSince = httpHeaders.getRequestHeader("x-oss-copy-source-if-unmodified-since");
+                    List<String> xOssMetadataDirective = httpHeaders.getRequestHeader("x-oss-metadata-directive");
+                    List<String> xOssServerSideEncryption = httpHeaders.getRequestHeader("x-oss-server-side-encryption");
+                    List<String> xOssServerSideEncryptionKeyId = httpHeaders.getRequestHeader("x-oss-server-side-encryption-key-id");
+                    List<String> xOssObjectAcl = httpHeaders.getRequestHeader("x-oss-object-acl");
+                    List<String> xOssStorageClass = httpHeaders.getRequestHeader("x-oss-storage-class");
+                    List<String> contentLength = httpHeaders.getRequestHeader("Content-Length");
+                    List<String> expires = httpHeaders.getRequestHeader("Expires");
+
+
+                }
+            } else {
+                //get header
+
+                List<String> host = httpHeaders.getRequestHeader("Host");
+                List<String> authorization = httpHeaders.getRequestHeader("Authorization");
+                List<String> xOssObjectAcl = httpHeaders.getRequestHeader("x-oss-object-acl");
+            }
+        } else {
+            //MultiPart
+
+            //get header
+
+            List<String> xOssCopySource = httpHeaders.getRequestHeader("x-oss-copy-source");
+            if (xOssCopySource == null) {
+                //uploadPart
+
+                //get header
+                List<String> host = httpHeaders.getRequestHeader("Host");
+                List<String> contentMD5 = httpHeaders.getRequestHeader("Content-MD5");
+                InputStream is = StringToInputStream(body);
+            } else {
+                //uploadPartCopy
+
+                //get header
+                List<String> host = httpHeaders.getRequestHeader("Host");
+                List<String> xOssCopySourceRange = httpHeaders.getRequestHeader("x-oss-copy-source-range");
+                List<String> xOssCopySourceIfMatch = httpHeaders.getRequestHeader("x-oss-copy-source-if-match");
+                List<String> xOssCopySourceIfNoneMatch = httpHeaders.getRequestHeader("x-oss-copy-source-if-none-match");
+                List<String> xOssCopySourceIfModifiedSince = httpHeaders.getRequestHeader("x-oss-copy-source-if-modified-since");
+                List<String> xOssCopySourceIfUnmodifiedSince = httpHeaders.getRequestHeader("x-oss-copy-source-if-unmodified-since");
+            }
+        }
+
         return null;
     }
 
